@@ -27,10 +27,10 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
     	console.log(error);
   });
 
-//  do it a second time
+  //  do it a second time
 
   client.initBulkQueries();
-
+  setTimeout(function() {
   for (let i=0; i < pattern.length; i++) {
     console.log ("adding bulkquery with" + pattern[i] + crypto + time_period ) ;
     client.addBulkQuery(pattern[i], "binance", crypto, time_period);  
@@ -48,6 +48,7 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
   }).catch(error => {
       console.log(error);
   });
+  }, 15000) ;
 
 }
 
