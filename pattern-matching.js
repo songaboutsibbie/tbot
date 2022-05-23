@@ -16,9 +16,9 @@ console.log('time period to run analysis on is: ', time_period);
 
 
 // call bulkapi execute function in 3 increments 15 seconds apart
-const bulkapi_execute = require("./bulkapi-execution.js");
+const bulkapi = require("./bulkapi.js");
 
-result = bulkapi_execute("crows", "backcrows");
+result = bulkapi.fn_bulkapi_execute("crows", "backcrows");
 
 console.log("pattern results for first exeuction");
 console.log(result);
