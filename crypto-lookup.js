@@ -13,6 +13,66 @@ switch (crypto) {
   case 'mana' :
     return "MANA/USDT" ;
     break;
+  case 'xrp' :
+    return "XRP/AUD" ;
+    break;
+  case 'ada' :
+    return "ADA/AUD" ;
+    break;
+  case 'sol' :
+    return "SOL/AUD" ;
+    break;
+  case 'dot' :
+    return "DOT/AUD" ;
+    break;
+  case 'shib' :
+    return "SHIB/AUD" ;
+    break;
+  case 'near' :
+    return "NEAR/AUD" ;
+    break;
+  case 'algo' :
+    return "ALGO/AUD" ;
+    break;
+  case 'uni' :
+    return "UNI/AUD" ;
+    break;
+  case 'axs' :
+    return "AXS/AUD" ;
+    break;
+  case 'gmt' :
+    return "GMT/AUD" ;
+    break;
+  case 'ksm' :
+    return "KSM/AUD" ;
+    break;
+  case 'enj' :
+    return "ENJ/AUD" ;
+    break;
+  case 'bat' :
+    return "BAT/AUD" ;
+    break;
+  case 'stx' :
+    return "STX/AUD" ;
+    break;
+  case 'kava' :
+    return "KAVA/AUD" ;
+    break;
+  case 'mina' :
+    return "MINA/AUD" ;
+    break;
+  case 'knc' :
+    return "KNC/AUD" ;
+    break;
+  case 'powr' :
+    return "POWR/AUD" ;
+    break;
+  case 'torn' :
+    return "TORN/AUD" ;
+    break;
+  case 'vidt' :
+    return "VIDT/AUD" ;
+    break;
   default:
     console.log('undefined crypto.');
 }
