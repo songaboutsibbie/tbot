@@ -18,11 +18,18 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
  	client.executeBulkQueries().then(result => {
     console.log("results for first iteration are as follows");
     console.log(result);
-   	for (let i=0; i < result.length; i++) {
-    if (result[i].result.value > 80) {
-      console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
+
+    client.initBulkQueries();
+    for (let i=0; i < pattern.length; i++) {
+      console.log ("adding bulkquery with" + pattern[i] + crypto + time_period ) ;
+      client.addBulkQuery(pattern[i], "binance", crypto, time_period);  
     }
-  }
+    client.executeBulkQueries().then(result => {
+      console.log("Blowing things up");
+    }).catch(error => {
+      console.log(error);
+    });
+
   }).catch(error => {
     	console.log(error);
   });
