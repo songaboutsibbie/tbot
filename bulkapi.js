@@ -26,7 +26,7 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
       client.addBulkQuery(pattern[i], "binance", crypto, time_period);  
     }
     client.executeBulkQueries().then(result => {
-      setTimeout(() => { console.log("Blowing things up!"); }, 2000);
+      setTimeout(() => { console.log("Blowing things up!"); }, 15000);
     }).catch(error => {
       console.log(error);
     });
