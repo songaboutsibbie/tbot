@@ -1,4 +1,4 @@
-function fn_bulkapi_execute(cryptos) {
+function fn_bulkapi_execute(pattern, crypto, time_period) {
   console.log("bulk api function has been called.  Adding Bulk Queries");
 
   // Require taapi: npm i taapi --save
@@ -10,7 +10,8 @@ function fn_bulkapi_execute(cryptos) {
   client.initBulkQueries();
 
 	for (let i=0; i < cryptos.length; i++) {
- 		client.addBulkQuery(crypto[i], "binance", crypto, time_period);	
+    console.log ("adding bulkquery with" + pattern[i] + crypto + time_period ) ;
+ 		client.addBulkQuery(pattern[i], "binance", crypto, time_period);	
 	}
 
 	console.log("Execute bulk api");
