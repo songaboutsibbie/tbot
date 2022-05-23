@@ -59,42 +59,43 @@ console.log("waiting 15 seconds then clearing bulk query and executing 15 new on
 setTimeout(function() {
   // Init bulk queries. This resets all previously added queries. Max of 20
   client.initBulkQueries();
-}, delayInMilliseconds);
 
-// bear reveral patterns
-client.addBulkQuery("eveningstar", "binance", crypto, time_period);
-client.addBulkQuery("gapsidesidewhite", "binance", crypto, time_period);
-client.addBulkQuery("gravestonedoji", "binance", crypto, time_period);
-client.addBulkQuery("hammer", "binance", crypto, time_period);
-client.addBulkQuery("hangingman", "binance", crypto, time_period);
-client.addBulkQuery("harami", "binance", crypto, time_period);
-client.addBulkQuery("haramicross", "binance", crypto, time_period);
-client.addBulkQuery("highwave", "binance", crypto, time_period);
-client.addBulkQuery("hikkake", "binance", crypto, time_period);
-client.addBulkQuery("hikkakemod", "binance", crypto, time_period);
-client.addBulkQuery("homingpigeon", "binance", crypto, time_period);
-client.addBulkQuery("identical3crows", "binance", crypto, time_period);
-client.addBulkQuery("inneck", "binance", crypto, time_period);
-client.addBulkQuery("invertedhammer", "binance", crypto, time_period);
-client.addBulkQuery("kicking", "binance", crypto, time_period);
-client.addBulkQuery("kickingbylength", "binance", crypto, time_period);
-client.addBulkQuery("ladderbottom", "binance", crypto, time_period);
-client.addBulkQuery("longleggeddoji", "binance", crypto, time_period);
-client.addBulkQuery("longline", "binance", crypto, time_period);
-client.addBulkQuery("marubozu", "binance", crypto, time_period);
+  // bear reveral patterns
+  client.addBulkQuery("eveningstar", "binance", crypto, time_period);
+  client.addBulkQuery("gapsidesidewhite", "binance", crypto, time_period);
+  client.addBulkQuery("gravestonedoji", "binance", crypto, time_period);
+  client.addBulkQuery("hammer", "binance", crypto, time_period);
+  client.addBulkQuery("hangingman", "binance", crypto, time_period);
+  client.addBulkQuery("harami", "binance", crypto, time_period);
+  client.addBulkQuery("haramicross", "binance", crypto, time_period);
+  client.addBulkQuery("highwave", "binance", crypto, time_period);
+  client.addBulkQuery("hikkake", "binance", crypto, time_period);
+  client.addBulkQuery("hikkakemod", "binance", crypto, time_period);
+  client.addBulkQuery("homingpigeon", "binance", crypto, time_period);
+  client.addBulkQuery("identical3crows", "binance", crypto, time_period);
+  client.addBulkQuery("inneck", "binance", crypto, time_period);
+  client.addBulkQuery("invertedhammer", "binance", crypto, time_period);
+  client.addBulkQuery("kicking", "binance", crypto, time_period);
+  client.addBulkQuery("kickingbylength", "binance", crypto, time_period);
+  client.addBulkQuery("ladderbottom", "binance", crypto, time_period);
+  client.addBulkQuery("longleggeddoji", "binance", crypto, time_period);
+  client.addBulkQuery("longline", "binance", crypto, time_period);
+  client.addBulkQuery("marubozu", "binance", crypto, time_period);
 
-// execture bulk queries
-client.executeBulkQueries().then(result => {
-  console.log(result);
-  console.log("\nPattern recognition results\n");
-  for (let i=0; i < result.length; i++) {
-    if (result[i].result.value > 80) {
-      console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
+  // execture bulk queries
+  client.executeBulkQueries().then(result => {
+    console.log(result);
+    console.log("\nPattern recognition results\n");
+    for (let i=0; i < result.length; i++) {
+      if (result[i].result.value > 80) {
+        console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
+      }
     }
-  }
-}).catch(error => {
-    console.log(error);
-});
+  }).catch(error => {
+      console.log(error);
+  });
+
+}, delayInMilliseconds);
 
 /*
 console.log("waiting 15 seconds then clearing bulk query and executing 15 new ones");
