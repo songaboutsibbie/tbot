@@ -19,57 +19,23 @@ indicators = [
 ];
 
 console.log("calling bulk api with first set of indicators");
-bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
+setTimeout(function() { bulkapi.fn_bulkapi_execute(indicators, crypto, time_period); }, 15000);
 console.log("returned from bulkapi");
 
 indicators = [
-"2crows", "3blackcrows", "3inside", "3linestrike", "3outside", "3starsinsouth", "3whitesoldiers", "abandonedbaby",
-"advanceblock", "belthold", "breakaway", "closingmarubozu", "concealbabyswall", "counterattack", "darkcloudcover", 
-"doji", "dojistar", "dragonflydoji", "engulfing", "eveningdojistar"
+"eveningstar", "gapsidesidewhite", "gravestonedoji", "hammer", "hangingman", "harami", "haramicross", "highwave",
+"hikkake", "hikkakemod", "homingpigeon", "identical3crows", "inneck", "invertedhammer", "kicking", 
+"kickingbylength", "ladderbottom", "longleggeddoji", "longline", "marubozu"
 ];
 
 console.log("calling bulk api with second set of indicators");
-bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
+setTimeout(function() { bulkapi.fn_bulkapi_execute(indicators, crypto, time_period); }, 15000);
+console.log("returned from bulkapi");
 console.log("returned from bulkapi");
 
 
 /*
-client.addBulkQuery("", "binance", crypto, time_period);
-client.addBulkQuery( "binance", crypto, time_period);
-client.addBulkQuery( "binance", crypto, time_period);
-client.addBulkQuery( "binance", crypto, time_period);
-client.addBulkQuery( "binance", crypto, time_period);
-client.addBulkQuery( "binance", crypto, time_period);
-client.addBulkQuery( "binance", crypto, time_period);
-client.addBulkQuery("binance", crypto, time_period);
-client.addBulkQuery("binance", crypto, time_period);
-client.addBulkQuery( "binance", crypto, time_period);
-client.addBulkQuery("binance", crypto, time_period);
-client.addBulkQuery("binance", crypto, time_period);
-client.addBulkQuery("binance", crypto, time_period);
 
-
-
-client.addBulkQuery("eveningstar", "binance", crypto, time_period);
-client.addBulkQuery("gapsidesidewhite", "binance", crypto, time_period);
-client.addBulkQuery("gravestonedoji", "binance", crypto, time_period);
-client.addBulkQuery("hammer", "binance", crypto, time_period);
-client.addBulkQuery("hangingman", "binance", crypto, time_period);
-client.addBulkQuery("harami", "binance", crypto, time_period);
-client.addBulkQuery("haramicross", "binance", crypto, time_period);
-client.addBulkQuery("highwave", "binance", crypto, time_period);
-client.addBulkQuery("hikkake", "binance", crypto, time_period);
-client.addBulkQuery("hikkakemod", "binance", crypto, time_period);
-client.addBulkQuery("homingpigeon", "binance", crypto, time_period);
-client.addBulkQuery("identical3crows", "binance", crypto, time_period);
-client.addBulkQuery("inneck", "binance", crypto, time_period);
-client.addBulkQuery("invertedhammer", "binance", crypto, time_period);
-client.addBulkQuery("kicking", "binance", crypto, time_period);
-client.addBulkQuery("kickingbylength", "binance", crypto, time_period);
-client.addBulkQuery("ladderbottom", "binance", crypto, time_period);
-client.addBulkQuery("longleggeddoji", "binance", crypto, time_period);
-client.addBulkQuery("longline", "binance", crypto, time_period);
-client.addBulkQuery("marubozu", "binance", crypto, time_period);
 
 
 client.addBulkQuery("matchinglow", "binance", crypto, time_period);
