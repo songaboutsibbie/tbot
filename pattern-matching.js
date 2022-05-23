@@ -23,7 +23,7 @@ bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
 console.log("returned from bulkapi");
 
 
-
+await new Promise(resolve => setTimeout(resolve, 10000));
 
 
 /*

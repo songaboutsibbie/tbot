@@ -19,7 +19,7 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
     console.log("results for first iteration are as follows");
     console.log(result);
 
-    await new Promise(resolve => setTimeout(resolve, 10000));
+    setTimeout(() => { console.log("World!"); }, 2000);
     client.initBulkQueries();
     for (let i=0; i < pattern.length; i++) {
       console.log ("adding bulkquery with" + pattern[i] + crypto + time_period ) ;
