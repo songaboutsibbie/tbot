@@ -28,7 +28,7 @@ for (let i=0; i < indicators.length; i++) { client.addBulkQuery(indicators[i], "
 client.executeBulkQueries().then(result => {
   for (let i=0; i < result.length; i++) {
     if (result[i].result.value > 80) { console.log(result[i].indicator + "pattern matches: value = " + result[i].result.value); }
-    else { console.log("pattern not matched for" + result[i].indicator ); }
+    else { console.log("pattern not matched for first" + result[i].indicator ); }
   }
 
   // EXECUTE SECOND 20
@@ -43,7 +43,10 @@ client.executeBulkQueries().then(result => {
 
   setTimeout(function() {
     client.executeBulkQueries().then(result => {
-      console.log(result);
+      for (let i=0; i < result.length; i++) {
+        if (result[i].result.value > 80) { console.log(result[i].indicator + "pattern matches: value = " + result[i].result.value); }
+        else { console.log("pattern not matched for first" + result[i].indicator ); }
+      }
 
       // EXECUTE THIRD 20
       client.initBulkQueries();
@@ -52,17 +55,21 @@ client.executeBulkQueries().then(result => {
       "separatinglines", "shootingstar", "shortline", "spinningtop", "stalledpattern", "sticksandwich", "takuri", 
       "tasukigap", "thrusting", "tristar", "unique3river", "upsidegap2crows"
       ];
+
       for (let i=0; i < indicators.length; i++) { client.addBulkQuery(indicators[i], "binance", crypto, time_period); }
 
       setTimeout(function() {
         client.executeBulkQueries().then(result => {
-          console.log(result);      
+          for (let i=0; i < result.length; i++) {
+            if (result[i].result.value > 80) { console.log(result[i].indicator + "pattern matches: value = " + result[i].result.value); }
+            else { console.log("pattern not matched for first" + result[i].indicator ); }
+          }  
 
-          }).catch(error => {
+        }).catch(error => {
               console.log(error);
-         });
-        }, 15000);
-        // END OF THIRD 20
+        });
+      }, 15000);
+      // END OF THIRD 20
 
     }).catch(error => {
       console.log(error);
