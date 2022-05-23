@@ -15,17 +15,19 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
 	}
 
 	console.log("Execute bulk api");
- 	client.executeBulkQueries().then(result => {
-    console.log("results are as follows");
-    console.log(result);
-   	for (let i=0; i < result.length; i++) {
-    if (result[i].result.value > 80) {
-      console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
+  setTimeout(function() {
+   	client.executeBulkQueries().then(result => {
+      console.log("results are as follows");
+      console.log(result);
+     	for (let i=0; i < result.length; i++) {
+      if (result[i].result.value > 80) {
+        console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
+      }
     }
-  }
-  }).catch(error => {
-    	console.log(error);
-  });
+    }).catch(error => {
+      	console.log(error);
+    });
+  }, 15000);
 
 }
 

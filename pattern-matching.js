@@ -18,7 +18,17 @@ indicators = [
 "doji", "dojistar", "dragonflydoji", "engulfing", "eveningdojistar"
 ];
 
-console.log("calling bulk api");
+console.log("calling bulk api with first set of indicators");
+bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
+console.log("returned from bulkapi");
+
+indicators = [
+"2crows", "3blackcrows", "3inside", "3linestrike", "3outside", "3starsinsouth", "3whitesoldiers", "abandonedbaby",
+"advanceblock", "belthold", "breakaway", "closingmarubozu", "concealbabyswall", "counterattack", "darkcloudcover", 
+"doji", "dojistar", "dragonflydoji", "engulfing", "eveningdojistar"
+];
+
+console.log("calling bulk api with second set of indicators");
 bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
 console.log("returned from bulkapi");
 
