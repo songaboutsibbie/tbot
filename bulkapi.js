@@ -15,6 +15,8 @@ function fn_bulkapi_execute(cryptos) {
 
 	console.log("Execute bulk api");
  	client.executeBulkQueries().then(result => {
+      console.log("results are as follows");
+      console.log(result);
    		return result;  
   }).catch(error => {
     	console.log(error);
