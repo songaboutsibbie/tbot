@@ -24,3 +24,5 @@ switch (crypto) {
 module.exports = { fn_crypto_lookup } ;
 
 //const crypto_list = ["BTC/USDT", "ETH/USDT", "SOL/USDT", "ADA/USDT", "AVAX/USDT", "MANA/USDT", "POWR/USDT", ]
+
+//adding  some extra comments in
