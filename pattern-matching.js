@@ -19,8 +19,8 @@ indicators = [
 ];
 result = bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
 
-//console.log("pattern results for first exeuction");
-//console.log(result);
+console.log("pattern results for first exeuction");
+console.log(result);
 
 /*
 client.addBulkQuery("", "binance", crypto, time_period);
