@@ -50,6 +50,29 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
     });
   }, 15000) ;
 
+    //  do it a third time
+
+  client.initBulkQueries();
+  setTimeout(function() {
+    for (let i=0; i < pattern.length; i++) {
+      console.log ("adding bulkquery with" + pattern[i] + crypto + time_period ) ;
+      client.addBulkQuery(pattern[i], "binance", crypto, time_period);  
+    }
+
+    console.log("Execute bulk api for third time");
+    client.executeBulkQueries().then(result => {
+      console.log("results for third iteration are as follows");
+      console.log(result);
+      for (let i=0; i < result.length; i++) {
+      if (result[i].result.value > 80) {
+        console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
+      }
+    }
+    }).catch(error => {
+        console.log(error);
+    });
+  }, 15000) ;
+
 }
 
 module.exports = { fn_bulkapi_execute } ;
