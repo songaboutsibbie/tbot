@@ -18,7 +18,7 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
  	client.executeBulkQueries().then(result => {
       console.log("results are as follows");
       console.log(result);
-   		return result;  
+   		//return result;  
   }).catch(error => {
     	console.log(error);
   });

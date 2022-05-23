@@ -15,5 +15,5 @@ const bulkapi = require("./bulkapi.js");
 
 result = bulkapi.fn_bulkapi_execute(["crows", "backcrows"], crypto, time_period);
 
-console.log("pattern results for first exeuction");
-console.log(result);
+//console.log("pattern results for first exeuction");
+//console.log(result);
