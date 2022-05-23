@@ -1,4 +1,4 @@
-function fn_bulkapi_execute(crytos) {
+function fn_bulkapi_execute(cryptos) {
   console.log("bulk api function has been called.  Adding Bulk Queries");
 
   // Require taapi: npm i taapi --save
