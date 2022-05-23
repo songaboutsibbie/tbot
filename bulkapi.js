@@ -14,10 +14,7 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
   "doji", "dojistar", "dragonflydoji", "engulfing", "eveningdojistar"
   ];
 
-	for (let i=0; i < indicators.length; i++) {
-    console.log ("adding bulkquery with" + indicators[i] + crypto + time_period ) ;
- 		client.addBulkQuery(indicators[i], "binance", crypto, time_period);	
-	}
+	for (let i=0; i < indicators.length; i++) { client.addBulkQuery(indicators[i], "binance", crypto, time_period);	}
 
 	console.log("Execute bulk api for first time");
  	client.executeBulkQueries().then(result => {
@@ -26,10 +23,13 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
 
     // SECOND LOOP
     client.initBulkQueries();
-    for (let i=0; i < pattern.length; i++) {
-      console.log ("adding bulkquery with" + pattern[i] + crypto + time_period ) ;
-      client.addBulkQuery(pattern[i], "binance", crypto, time_period);  
-    }
+    indicators = [
+    "eveningstar", "gapsidesidewhite", "gravestonedoji", "hammer", "hangingman", "harami", "haramicross", "highwave",
+    "hikkake", "hikkakemod", "homingpigeon", "identical3crows", "inneck", "invertedhammer", "kicking", 
+    "kickingbylength", "ladderbottom", "longleggeddoji", "longline", "marubozu"
+    ];
+    for (let i=0; i < pattern.length; i++) { client.addBulkQuery(pattern[i], "binance", crypto, time_period);}
+      
     setTimeout(function() {
       client.executeBulkQueries().then(result => {
         console.log("results for second iteration are as follows");
@@ -37,10 +37,8 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
 
         // THIRD LOOP
         client.initBulkQueries();
-        for (let i=0; i < pattern.length; i++) {
-          console.log ("adding bulkquery with" + pattern[i] + crypto + time_period ) ;
-          client.addBulkQuery(pattern[i], "binance", crypto, time_period);  
-        }
+        for (let i=0; i < pattern.length; i++) { client.addBulkQuery(pattern[i], "binance", crypto, time_period); }
+
         setTimeout(function() {
           client.executeBulkQueries().then(result => {
             console.log("results for third iteration are as follows");
