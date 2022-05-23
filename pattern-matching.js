@@ -18,8 +18,10 @@ console.log('time period to run analysis on is: ', time_period);
 var delayInMilliseconds = 16000; // 15 seconds
 
 // Init bulk queries. This resets all previously added queries. Max of 20
+console.log("pre init Bulk - 1");
 client.initBulkQueries();
 
+console.log("preaddBulk - 1");
 client.addBulkQuery("2crows", "binance", crypto, time_period);
 client.addBulkQuery("3blackcrows", "binance", crypto, time_period);
 client.addBulkQuery("3inside", "binance", crypto, time_period);
@@ -41,10 +43,11 @@ client.addBulkQuery("dragonflydoji", "binance", crypto, time_period);
 client.addBulkQuery("engulfing", "binance", crypto, time_period);
 client.addBulkQuery("eveningdojistar", "binance", crypto, time_period);
 
+console.log("pre client.execute - 1");
 // execture bulk queries
 client.executeBulkQueries().then(result => {
   console.log(result);
-  console.log("\nPattern recognition results\n");
+  console.log("\nPattern recognition result - 1\n");
   for (let i=0; i < result.length; i++) {
     if (result[i].result.value > 80) {
       console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
@@ -58,9 +61,10 @@ client.executeBulkQueries().then(result => {
 console.log("waiting 15 seconds then clearing bulk query and executing 15 new ones");
 setTimeout(function() {
   // Init bulk queries. This resets all previously added queries. Max of 20
+  console.log("pre init Bulk - 2 ");
   client.initBulkQueries();
 
-  // bear reveral patterns
+  console.log("preaddBulk - 2");
   client.addBulkQuery("eveningstar", "binance", crypto, time_period);
   client.addBulkQuery("gapsidesidewhite", "binance", crypto, time_period);
   client.addBulkQuery("gravestonedoji", "binance", crypto, time_period);
@@ -83,9 +87,10 @@ setTimeout(function() {
   client.addBulkQuery("marubozu", "binance", crypto, time_period);
 
   // execture bulk queries
+  console.log("pre client.execute - 2");
   client.executeBulkQueries().then(result => {
     console.log(result);
-    console.log("\nPattern recognition results\n");
+    console.log("\nPattern recognition results - 2\n");
     for (let i=0; i < result.length; i++) {
       if (result[i].result.value > 80) {
         console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
