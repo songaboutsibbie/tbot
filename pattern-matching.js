@@ -12,7 +12,11 @@ console.log('time period to run analysis on is: ', time_period);
 
 // call bulkapi execute function in 3 increments 15 seconds apart
 const bulkapi = require("./bulkapi.js");
-indicators = ["2crows", "3blackcrows", "3inside", "3linestrike", "3outside", "3starsinsouth", "3whitesoldiers", "abandonedbaby"];
+indicators = [
+"2crows", "3blackcrows", "3inside", "3linestrike", "3outside", "3starsinsouth", "3whitesoldiers", "abandonedbaby",
+"advanceblock", "belthold", "breakaway", "closingmarubozu", "concealbabyswall", "counterattack", "darkcloudcover", 
+"doji", "dojistar", "dragonflydoji", "engulfing", "eveningdojistar"
+];
 result = bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
 
 //console.log("pattern results for first exeuction");
@@ -20,18 +24,18 @@ result = bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
 
 /*
 client.addBulkQuery("", "binance", crypto, time_period);
-client.addBulkQuery("advanceblock", "binance", crypto, time_period);
-client.addBulkQuery("belthold", "binance", crypto, time_period);
-client.addBulkQuery("breakaway", "binance", crypto, time_period);
-client.addBulkQuery("closingmarubozu", "binance", crypto, time_period);
-client.addBulkQuery("concealbabyswall", "binance", crypto, time_period);
-client.addBulkQuery("counterattack", "binance", crypto, time_period);
-client.addBulkQuery("darkcloudcover", "binance", crypto, time_period);
-client.addBulkQuery("doji", "binance", crypto, time_period);
-client.addBulkQuery("dojistar", "binance", crypto, time_period);
-client.addBulkQuery("dragonflydoji", "binance", crypto, time_period);
-client.addBulkQuery("engulfing", "binance", crypto, time_period);
-client.addBulkQuery("eveningdojistar", "binance", crypto, time_period);
+client.addBulkQuery( "binance", crypto, time_period);
+client.addBulkQuery( "binance", crypto, time_period);
+client.addBulkQuery( "binance", crypto, time_period);
+client.addBulkQuery( "binance", crypto, time_period);
+client.addBulkQuery( "binance", crypto, time_period);
+client.addBulkQuery( "binance", crypto, time_period);
+client.addBulkQuery("binance", crypto, time_period);
+client.addBulkQuery("binance", crypto, time_period);
+client.addBulkQuery( "binance", crypto, time_period);
+client.addBulkQuery("binance", crypto, time_period);
+client.addBulkQuery("binance", crypto, time_period);
+client.addBulkQuery("binance", crypto, time_period);
 
 
 
