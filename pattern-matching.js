@@ -25,10 +25,11 @@ indicators = [
 
 for (let i=0; i < indicators.length; i++) { client.addBulkQuery(indicators[i], "binance", crypto, time_period); }
 
-console.log("Execute bulk api for first time");
 client.executeBulkQueries().then(result => {
-  console.log("results for first iteration are as follows");
-  console.log(result);
+  for (let i=0; i < result.length; i++) {
+    if (result[i].result.value > 80) { console.log(result[i].indicator + "pattern matches: value = " + result[i].result.value); }
+    else { console.log("pattern not matched for" + indicator ); }
+  }
 
   // EXECUTE SECOND 20
   client.initBulkQueries();
@@ -42,7 +43,6 @@ client.executeBulkQueries().then(result => {
 
   setTimeout(function() {
     client.executeBulkQueries().then(result => {
-      console.log("results for second iteration are as follows");
       console.log(result);
 
       // EXECUTE THIRD 20
@@ -56,14 +56,13 @@ client.executeBulkQueries().then(result => {
 
       setTimeout(function() {
         client.executeBulkQueries().then(result => {
-          console.log("results for third iteration are as follows");
           console.log(result);      
 
           }).catch(error => {
               console.log(error);
          });
         }, 15000);
-        // END OF THIRD 2-
+        // END OF THIRD 20
 
     }).catch(error => {
       console.log(error);
