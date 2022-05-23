@@ -1,6 +1,6 @@
 function fn_bulkapi_execute(crytos) {
-  	console.log("bulk api function has been called.  Adding Bulk Queries");
-  	client.initBulkQueries();
+  console.log("bulk api function has been called.  Adding Bulk Queries");
+  client.initBulkQueries();
 
 	for (let i=0; i < cryptos.length; i++) {
  		client.addBulkQuery(crypto[i], "binance", crypto, time_period);	
@@ -9,11 +9,14 @@ function fn_bulkapi_execute(crytos) {
 	console.log("Execute bulk api");
  	client.executeBulkQueries().then(result => {
    		return result;  
-  	}).catch(error => {
+  }).catch(error => {
     	console.log(error);
-  	});
+  });
 
-module.exports = { fn_bulkapi_execute };
+}
+
+module.exports = { fn_bulkapi_execute } ;
+
 
 /*
 
