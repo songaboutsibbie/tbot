@@ -96,7 +96,7 @@ client.executeBulkQueries().then(result => {
     console.log(error);
 });
 
-
+/*
 console.log("waiting 15 seconds then clearing bulk query and executing 15 new ones");
 setTimeout(function() {
   // Init bulk queries. This resets all previously added queries. Max of 20
@@ -137,3 +137,4 @@ client.executeBulkQueries().then(result => {
 }).catch(error => {
     console.log(error);
 });
+*/
