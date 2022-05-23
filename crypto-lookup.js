@@ -10,7 +10,7 @@ switch (crypto) {
   case 'avax' :
     return "AVAX/AUD" ;
     break;
-    case 'mana' :
+  case 'mana' :
     return "MANA/USDT" ;
     break;
   default:
