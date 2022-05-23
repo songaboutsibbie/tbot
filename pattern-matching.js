@@ -137,7 +137,3 @@ client.executeBulkQueries().then(result => {
 }).catch(error => {
     console.log(error);
 });
-
-
-
-*/
