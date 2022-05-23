@@ -19,9 +19,14 @@ indicators = [
 ];
 
 console.log("calling bulk api with first set of indicators");
-setTimeout(function() { bulkapi.fn_bulkapi_execute(indicators, crypto, time_period); }, 15000);
+bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
 console.log("returned from bulkapi");
 
+
+
+
+
+/*
 indicators = [
 "eveningstar", "gapsidesidewhite", "gravestonedoji", "hammer", "hangingman", "harami", "haramicross", "highwave",
 "hikkake", "hikkakemod", "homingpigeon", "identical3crows", "inneck", "invertedhammer", "kicking", 
@@ -29,10 +34,9 @@ indicators = [
 ];
 
 console.log("calling bulk api with second set of indicators");
-setTimeout(function() { bulkapi.fn_bulkapi_execute(indicators, crypto, time_period); }, 15000);
+bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
 console.log("returned from bulkapi");
-console.log("returned from bulkapi");
-
+*/
 
 /*
 
