@@ -17,11 +17,12 @@ console.log('crypto to run analysis on is: ', crypto);
 time_period = myArgs[1];
 console.log('time period to run analysis on is: ', time_period);
 
+// set timeout delay required due to api limitations
+var delayInMilliseconds = 16000; // 15 seconds
 
 // Init bulk queries. This resets all previously added queries. Max of 20
 client.initBulkQueries();
 
-// bear reveral patterns
 client.addBulkQuery("2crows", "binance", crypto, time_period);
 client.addBulkQuery("3blackcrows", "binance", crypto, time_period);
 client.addBulkQuery("3inside", "binance", crypto, time_period);
@@ -57,89 +58,89 @@ client.executeBulkQueries().then(result => {
 });
 
 
-//execute bulk queries with a 15 second delay
-var delayInMilliseconds = 16000; // 15 seconds
+console.log("waiting 15 seconds then clearing bulk query and executing 15 new ones");
 setTimeout(function() {
   // Init bulk queries. This resets all previously added queries. Max of 20
   client.initBulkQueries();
-
-  // bear reveral patterns
-  client.addBulkQuery("eveningstar", "binance", crypto, time_period);
-  client.addBulkQuery("gapsidesidewhite", "binance", crypto, time_period);
-  client.addBulkQuery("gravestonedoji", "binance", crypto, time_period);
-  client.addBulkQuery("hammer", "binance", crypto, time_period);
-  client.addBulkQuery("hangingman", "binance", crypto, time_period);
-  client.addBulkQuery("harami", "binance", crypto, time_period);
-  client.addBulkQuery("haramicross", "binance", crypto, time_period);
-  client.addBulkQuery("highwave", "binance", crypto, time_period);
-  client.addBulkQuery("hikkake", "binance", crypto, time_period);
-  client.addBulkQuery("hikkakemod", "binance", crypto, time_period);
-  client.addBulkQuery("homingpigeon", "binance", crypto, time_period);
-  client.addBulkQuery("identical3crows", "binance", crypto, time_period);
-  client.addBulkQuery("inneck", "binance", crypto, time_period);
-  client.addBulkQuery("invertedhammer", "binance", crypto, time_period);
-  client.addBulkQuery("kicking", "binance", crypto, time_period);
-  client.addBulkQuery("kickingbylength", "binance", crypto, time_period);
-  client.addBulkQuery("ladderbottom", "binance", crypto, time_period);
-  client.addBulkQuery("longleggeddoji", "binance", crypto, time_period);
-  client.addBulkQuery("longline", "binance", crypto, time_period);
-  client.addBulkQuery("marubozu", "binance", crypto, time_period);
-
-  // execture bulk queries
-  client.executeBulkQueries().then(result => {
-    console.log(result);
-    console.log("\nPattern recognition results\n");
-    for (let i=0; i < result.length; i++) {
-      if (result[i].result.value > 80) {
-        console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
-      }
-    }
-  }).catch(error => {
-      console.log(error);
-  });
 }, delayInMilliseconds);
 
-/*
-//execute bulk queries with a 15 second delay
+// bear reveral patterns
+client.addBulkQuery("eveningstar", "binance", crypto, time_period);
+client.addBulkQuery("gapsidesidewhite", "binance", crypto, time_period);
+client.addBulkQuery("gravestonedoji", "binance", crypto, time_period);
+client.addBulkQuery("hammer", "binance", crypto, time_period);
+client.addBulkQuery("hangingman", "binance", crypto, time_period);
+client.addBulkQuery("harami", "binance", crypto, time_period);
+client.addBulkQuery("haramicross", "binance", crypto, time_period);
+client.addBulkQuery("highwave", "binance", crypto, time_period);
+client.addBulkQuery("hikkake", "binance", crypto, time_period);
+client.addBulkQuery("hikkakemod", "binance", crypto, time_period);
+client.addBulkQuery("homingpigeon", "binance", crypto, time_period);
+client.addBulkQuery("identical3crows", "binance", crypto, time_period);
+client.addBulkQuery("inneck", "binance", crypto, time_period);
+client.addBulkQuery("invertedhammer", "binance", crypto, time_period);
+client.addBulkQuery("kicking", "binance", crypto, time_period);
+client.addBulkQuery("kickingbylength", "binance", crypto, time_period);
+client.addBulkQuery("ladderbottom", "binance", crypto, time_period);
+client.addBulkQuery("longleggeddoji", "binance", crypto, time_period);
+client.addBulkQuery("longline", "binance", crypto, time_period);
+client.addBulkQuery("marubozu", "binance", crypto, time_period);
+
+// execture bulk queries
+client.executeBulkQueries().then(result => {
+  console.log(result);
+  console.log("\nPattern recognition results\n");
+  for (let i=0; i < result.length; i++) {
+    if (result[i].result.value > 80) {
+      console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
+    }
+  }
+}).catch(error => {
+    console.log(error);
+});
+
+
+console.log("waiting 15 seconds then clearing bulk query and executing 15 new ones");
 setTimeout(function() {
   // Init bulk queries. This resets all previously added queries. Max of 20
   client.initBulkQueries();
-
-  // bear reveral patterns
-  client.addBulkQuery("matchinglow", "binance", crypto, time_period);
-  client.addBulkQuery("mathold", "binance", crypto, time_period);
-  client.addBulkQuery("morningdojistar", "binance", crypto, time_period);
-  client.addBulkQuery("morningstar", "binance", crypto, time_period);
-  client.addBulkQuery("onneck", "binance", crypto, time_period);
-  client.addBulkQuery("piercing", "binance", crypto, time_period);
-  client.addBulkQuery("rickshawman", "binance", crypto, time_period);
-  client.addBulkQuery("risefall3methods", "binance", crypto, time_period);
-  client.addBulkQuery("separatinglines", "binance", crypto, time_period);
-  client.addBulkQuery("shootingstar", "binance", crypto, time_period);
-  client.addBulkQuery("shortline", "binance", crypto, time_period);
-  client.addBulkQuery("spinningtop", "binance", crypto, time_period);
-  client.addBulkQuery("stalledpattern", "binance", crypto, time_period);
-  client.addBulkQuery("sticksandwich", "binance", crypto, time_period);
-  client.addBulkQuery("takuri", "binance", crypto, time_period);
-  client.addBulkQuery("tasukigap", "binance", crypto, time_period);
-  client.addBulkQuery("thrusting", "binance", crypto, time_period);
-  client.addBulkQuery("tristar", "binance", crypto, time_period);
-  client.addBulkQuery("unique3river", "binance", crypto, time_period);
-  client.addBulkQuery("upsidegap2crows", "binance", crypto, time_period);
-
-  // execture bulk queries
-  client.executeBulkQueries().then(result => {
-    console.log(result);
-    console.log("\nPattern recognition results\n");
-    for (let i=0; i < result.length; i++) {
-      if (result[i].result.value > 80) {
-        console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
-      }
-    }
-  }).catch(error => {
-      console.log(error);
-  });
 }, delayInMilliseconds);
+
+// bear reveral patterns
+client.addBulkQuery("matchinglow", "binance", crypto, time_period);
+client.addBulkQuery("mathold", "binance", crypto, time_period);
+client.addBulkQuery("morningdojistar", "binance", crypto, time_period);
+client.addBulkQuery("morningstar", "binance", crypto, time_period);
+client.addBulkQuery("onneck", "binance", crypto, time_period);
+client.addBulkQuery("piercing", "binance", crypto, time_period);
+client.addBulkQuery("rickshawman", "binance", crypto, time_period);
+client.addBulkQuery("risefall3methods", "binance", crypto, time_period);
+client.addBulkQuery("separatinglines", "binance", crypto, time_period);
+client.addBulkQuery("shootingstar", "binance", crypto, time_period);
+client.addBulkQuery("shortline", "binance", crypto, time_period);
+client.addBulkQuery("spinningtop", "binance", crypto, time_period);
+client.addBulkQuery("stalledpattern", "binance", crypto, time_period);
+client.addBulkQuery("sticksandwich", "binance", crypto, time_period);
+client.addBulkQuery("takuri", "binance", crypto, time_period);
+client.addBulkQuery("tasukigap", "binance", crypto, time_period);
+client.addBulkQuery("thrusting", "binance", crypto, time_period);
+client.addBulkQuery("tristar", "binance", crypto, time_period);
+client.addBulkQuery("unique3river", "binance", crypto, time_period);
+client.addBulkQuery("upsidegap2crows", "binance", crypto, time_period);
+
+// execture bulk queries
+client.executeBulkQueries().then(result => {
+  console.log(result);
+  console.log("\nPattern recognition results\n");
+  for (let i=0; i < result.length; i++) {
+    if (result[i].result.value > 80) {
+      console.log(result[i].indicator + "pattern matches with value of " + result[i].result.value);
+    }
+  }
+}).catch(error => {
+    console.log(error);
+});
+
 
 
 */
