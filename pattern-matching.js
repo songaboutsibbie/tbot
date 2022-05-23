@@ -28,7 +28,7 @@ for (let i=0; i < indicators.length; i++) { client.addBulkQuery(indicators[i], "
 client.executeBulkQueries().then(result => {
   for (let i=0; i < result.length; i++) {
     if (result[i].result.value > 80) { console.log(result[i].indicator + "pattern matches: value = " + result[i].result.value); }
-    else { console.log("pattern not matched for" + indicator ); }
+    else { console.log("pattern not matched for" + result[i].indicator ); }
   }
 
   // EXECUTE SECOND 20
