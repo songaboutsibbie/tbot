@@ -17,10 +17,11 @@ indicators = [
 "advanceblock", "belthold", "breakaway", "closingmarubozu", "concealbabyswall", "counterattack", "darkcloudcover", 
 "doji", "dojistar", "dragonflydoji", "engulfing", "eveningdojistar"
 ];
-result = bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
 
-console.log("pattern results for first exeuction");
-console.log(result);
+console.log("calling bulk api");
+bulkapi.fn_bulkapi_execute(indicators, crypto, time_period);
+console.log("returned from bulkapi");
+
 
 /*
 client.addBulkQuery("", "binance", crypto, time_period);
