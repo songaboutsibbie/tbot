@@ -28,8 +28,8 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
     "hikkake", "hikkakemod", "homingpigeon", "identical3crows", "inneck", "invertedhammer", "kicking", 
     "kickingbylength", "ladderbottom", "longleggeddoji", "longline", "marubozu"
     ];
-    for (let i=0; i < pattern.length; i++) { client.addBulkQuery(pattern[i], "binance", crypto, time_period);}
-      
+    for (let i=0; i < indicators.length; i++) { client.addBulkQuery(indicators[i], "binance", crypto, time_period);}
+
     setTimeout(function() {
       client.executeBulkQueries().then(result => {
         console.log("results for second iteration are as follows");
@@ -37,7 +37,12 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
 
         // THIRD LOOP
         client.initBulkQueries();
-        for (let i=0; i < pattern.length; i++) { client.addBulkQuery(pattern[i], "binance", crypto, time_period); }
+        indicators = [
+        "matchinglow", "mathold", "morningdojistar", "morningstar", "onneck", "piercing", "rickshawman", "risefall3methods",
+        "separatinglines", "shootingstar", "shortline", "spinningtop", "stalledpattern", "sticksandwich", "takuri", 
+        "tasukigap", "thrusting", "tristar", "unique3river", "upsidegap2crows"
+        ];
+        for (let i=0; i < indicators.length; i++) { client.addBulkQuery(indicators[i], "binance", crypto, time_period); }
 
         setTimeout(function() {
           client.executeBulkQueries().then(result => {
