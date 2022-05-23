@@ -9,7 +9,7 @@ function fn_bulkapi_execute(pattern, crypto, time_period) {
 
   client.initBulkQueries();
 
-	for (let i=0; i < cryptos.length; i++) {
+	for (let i=0; i < pattern.length; i++) {
     console.log ("adding bulkquery with" + pattern[i] + crypto + time_period ) ;
  		client.addBulkQuery(pattern[i], "binance", crypto, time_period);	
 	}
