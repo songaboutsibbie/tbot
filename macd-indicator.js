@@ -36,18 +36,16 @@ axios.get('https://api.taapi.io/macd', {
   if (response.data[0].valueMACD < response.data[0].valueMACDSignal) { bullStartingCondition = true; }
 
   console.log ("Finishing MACD : " + response.data[backtracks_length].valueMACD & "    finishing MACD Signal : " + response.data[backtracks_length].valueMACDSignal);
-  if (response.data[backtracks_length].valueMACD > response.data[backtracks_length].valueMACDSignal) { bullFinishingCondition = true; };
+  if (response.data[backtracks_length].valueMACD > response.data[backtracks_length].valueMACDSignal) { bullFinishingCondition = true; }
 
-  if (response.data[0].valueMACD < 0 && response.data[backtracks_length].valueMACD > 0) { bullStrength = "Strong"; 
+  if (response.data[0].valueMACD < 0 && response.data[backtracks_length].valueMACD > 0) { bullStrength = "Strong"; }
 
   if (bullStartingCondition == true && bullFinishingCondition == true) {
   	console.log("MACDADDY ALERT. BUY! BUY! BUY!");
   	console.log("Strength is : " + bullStrength);
   	console.log(response.data);
   }
-
-
-}
+})
 .catch(function (error) {
   console.log(error.response.data);
 });
