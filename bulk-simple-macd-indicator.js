@@ -34,11 +34,22 @@ client.executeBulkQueries().then(result => {
   }
 
 }).then( result => {
-  console.log("Im in a second then");
+  setTimeout(function() {
+  console.log("waiting 5 seconds then going again for a second time");
+  }, 5000);
+}).then( result => {
+  setTimeout(function() {
+  console.log("waiting 5 seconds then going again for a third time");
+  }, 5000);
 }).catch(error => {
     console.log(error);
 });
 
+
+
+setTimeout(function() {
+  console.log("waiting 5 seconds then going again for a second time");
+}, 5000);
   
 /*
 client.executeBulkQueries().then(result => {
