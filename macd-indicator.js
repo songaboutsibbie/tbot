@@ -40,7 +40,7 @@ axios.get('https://api.taapi.io/macd', {
 
   if (response.data[0].valueMACD < 0 && response.data[backtracks_length].valueMACD > 0) { bullStrength = "Strong"; 
 
-  if (bullStartingCondition = true && bullFinishingCondition = true) {
+  if (bullStartingCondition == true && bullFinishingCondition == true) {
   	console.log("MACDADDY ALERT. BUY! BUY! BUY!");
   	console.log("Strength is : " + bullStrength);
   	console.log(response.data);
