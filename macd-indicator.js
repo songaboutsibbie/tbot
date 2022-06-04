@@ -34,10 +34,9 @@ axios.get('https://api.taapi.io/macd', {
 
   
   console.log ("Starting MACD : " + response.data[0].valueMACD + "    starting MACD Signal : " + response.data[0].valueMACDSignal);
-  /*
   if (response.data[0].valueMACD < response.data[0].valueMACDSignal) { bullStartingCondition = true; }
 
-  console.log ("Finishing MACD : " + response.data[17].valueMACD & "    finishing MACD Signal : " + response.data[17].valueMACDSignal);
+  console.log ("Finishing MACD : " + response.data[17].valueMACD + "    finishing MACD Signal : " + response.data[17].valueMACDSignal);
   if (response.data[17].valueMACD > response.data[17].valueMACDSignal) { bullFinishingCondition = true; }
 
   if (response.data[0].valueMACD < 0 && response.data[17].valueMACD > 0) { bullStrength = "Strong"; }
