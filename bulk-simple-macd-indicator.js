@@ -17,8 +17,6 @@ for (let i=0; i < crypto_list.length; i++) {
 
 }
 
-  
-// execture bulk queries
 client.executeBulkQueries().then(result => {
   console.log(result);
 
@@ -31,10 +29,35 @@ client.executeBulkQueries().then(result => {
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist > 0)  { 
       msg = console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); 
-      curl -X POST -H 'Content-type: application/json' --data '{"text":"test"}' https://hooks.slack.com/services/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
+      //curl -X POST -H 'Content-type: application/json' --data '{"text":"test"}' https://hooks.slack.com/services/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
+    }
+  }
+
+}).then( {
+  console.log("Im in a second then");
+}).catch(error => {
+    console.log(error);
+});
+
+  
+/*
+client.executeBulkQueries().then(result => {
+  console.log(result);
+
+  console.log("\n*** SELL RESULTS ***")
+  for (let i=0; i < result.length; i++) {
+    if ( result[i].result.valueMACDHist < 0) { console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); }
+  }
+
+  console.log("\n*** BUY RESULTS ***")
+  for (let i=0; i < result.length; i++) {
+    if ( result[i].result.valueMACDHist > 0)  { 
+      msg = console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); 
+      //curl -X POST -H 'Content-type: application/json' --data '{"text":"test"}' https://hooks.slack.com/services/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
     }
   }
 
 }).catch(error => {
     console.log(error);
 });
+*/
