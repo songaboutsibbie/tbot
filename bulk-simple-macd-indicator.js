@@ -27,23 +27,25 @@ client.executeBulkQueries().then(result => {
 
   console.log("\n*** SELL RESULTS ***")
   for (let i=0; i < result.length; i++) {
-    if ( result[i].result.valueMACDHist < 0) { console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); }
+    if ( result[i].result.valueMACDHist < 0) { 
+      console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); 
+      var msg = result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ; 
+      console.log(msg);    }
   }
 
   console.log("\n*** BUY RESULTS ***")
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist > 0)  { 
-      msg = console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); 
-      //curl -X POST -H 'Content-type: application/json' --data '{"text":"test"}' https://hooks.slack.com/services/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
+      console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); 
+      var msg = result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ; 
+      console.log(msg);
     }
   }
 
   slack.fn_sendmessage("hello world");
 
 }).then( result => {
-  
-  console.log("\nwaiting 5 seconds then going again for a second time\n");
- 
+  // this may have a future use
 }).catch(error => {
     console.log(error);
 });
