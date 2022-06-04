@@ -8,7 +8,7 @@ const client = taapi.client("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6In
 
 
 // set crypto and time period to run analysis on based on command line arguments
-const crypto_lookup = require("./crypto-lookup.js");
+const crypto_lookup = require("./helpers/crypto-lookup.js");
 const myArgs = process.argv.slice(2);
 crypto = crypto_lookup.fn_crypto_lookup(myArgs[0]);
 console.log('crypto to run analysis on is: ', crypto);
