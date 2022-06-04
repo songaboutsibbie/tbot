@@ -50,5 +50,4 @@ axios.get('https://api.taapi.io/macd', {
   console.log(error.response.data);
 });
 
-console.log("when will this print?");
 
