@@ -22,8 +22,14 @@ for (let i=0; i < crypto_list.length; i++) {
 client.executeBulkQueries().then(result => {
   console.log(result);
 
+  console.log("*** SELL RESULTS ***")
   for (let i=0; i < result.length; i++) {
-    console.log(result[i].result.valueMACDHist);
+    if ( result[i].result.valueMACDHist < 0) { console.log(result[i].id + " has macd.histo value of " result[i].result.valueMACDHist )}
+  }
+
+  console.log("*** BUY RESULTS ***")
+  for (let i=0; i < result.length; i++) {
+    if ( result[i].result.valueMACDHist > 0) { console.log(result[i].id + " has macd.histo value of " result[i].result.valueMACDHist )}
   }
 
 }).catch(error => {
