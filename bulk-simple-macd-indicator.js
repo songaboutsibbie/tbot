@@ -36,7 +36,7 @@ client.executeBulkQueries().then(result => {
   var msg = "BUY the following crypto as MACD and has hit positive"
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist > 0)  { 
-      var msg = msg + "\n"result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ;  
+      var msg = msg + "\n" + result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ;  
     }
   }
   slack.fn_sendmessage(msg);  
