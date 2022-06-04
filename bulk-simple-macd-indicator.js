@@ -26,12 +26,13 @@ client.executeBulkQueries().then(result => {
   console.log(result);
 
   console.log("\n*** SELL RESULTS ***")
+  var msg = "SELL RESULTS ARE"
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist < 0) {  
-      var msg = result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ; 
-      slack.fn_sendmessage(msg);    
+      var msg = msg + "\n" + result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ;     
     }
   }
+  slack.fn_sendmessage(msg);
 
   console.log("\n*** BUY RESULTS ***")
   for (let i=0; i < result.length; i++) {
