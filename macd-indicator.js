@@ -47,7 +47,6 @@ axios.get('https://api.taapi.io/macd', {
   	console.log(response.data);
   }
 
-  */
 })
 .catch(function (error) {
   console.log(error.response.data);
