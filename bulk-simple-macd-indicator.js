@@ -25,8 +25,7 @@ for (let i=0; i < crypto_list.length; i++) {
 client.executeBulkQueries().then(result => {
   console.log(result);
 
-  console.log("\n*** SELL RESULTS ***")
-  var msg = "SELL RESULTS ARE"
+  var msg = "SELL the following crypto as MACD and dropped to negative"
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist < 0) {  
       var msg = msg + "\n" + result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ;     
@@ -34,13 +33,13 @@ client.executeBulkQueries().then(result => {
   }
   slack.fn_sendmessage(msg);
 
-  console.log("\n*** BUY RESULTS ***")
+  var msg = "BUY the following crypto as MACD and has hit positive"
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist > 0)  { 
-      var msg = result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ; 
-      slack.fn_sendmessage(msg);   
+      var msg = msg + "\n"result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ;  
     }
   }
+  slack.fn_sendmessage(msg);  
 
   
 
