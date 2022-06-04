@@ -27,22 +27,21 @@ client.executeBulkQueries().then(result => {
 
   console.log("\n*** SELL RESULTS ***")
   for (let i=0; i < result.length; i++) {
-    if ( result[i].result.valueMACDHist < 0) { 
-      console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); 
+    if ( result[i].result.valueMACDHist < 0) {  
       var msg = result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ; 
-      console.log(msg);    }
+      slack.fn_sendmessage(msg);    
+    }
   }
 
   console.log("\n*** BUY RESULTS ***")
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist > 0)  { 
-      console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); 
       var msg = result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ; 
-      console.log(msg);
+      slack.fn_sendmessage(msg);   
     }
   }
 
-  slack.fn_sendmessage("hello world");
+  
 
 }).then( result => {
   // this may have a future use
