@@ -28,10 +28,11 @@ axios.get('https://api.taapi.io/macd', {
   }
 })
 .then(function (response) {
-  
-  
   //check for signal crossover buy indicator;
 
+  console.log ("are we doing anything");
+  
+  /*
   console.log ("Starting MACD : " + response.data[0].valueMACD & "    starting MACD Signal : " + response.data[0].valueMACDSignal);
   if (response.data[0].valueMACD < response.data[0].valueMACDSignal) { bullStartingCondition = true; }
 
@@ -45,6 +46,8 @@ axios.get('https://api.taapi.io/macd', {
   	console.log("Strength is : " + bullStrength);
   	console.log(response.data);
   }
+
+  */
 })
 .catch(function (error) {
   console.log(error.response.data);
