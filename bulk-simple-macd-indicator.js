@@ -37,10 +37,12 @@ client.executeBulkQueries().then(result => {
   setTimeout(function() {
   console.log("\nwaiting 5 seconds then going again for a second time\n");
   }, 5000);
+  console.log("after timeout");
 }).then( result => {
   setTimeout(function() {
   console.log("waiting 5 seconds then going again for a third time\n");
   }, 5000);
+  console.log("after timeout");
 }).catch(error => {
     console.log(error);
 });
