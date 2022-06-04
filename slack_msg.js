@@ -4,7 +4,7 @@ var options = {
   uri: 'https://hooks.slack.com/services/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',
   method: 'POST',
   json: {
-    "data": "hello world"
+    "text": "hello world"
   }
 };
 
