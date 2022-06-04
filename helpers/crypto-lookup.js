@@ -73,6 +73,9 @@ switch (crypto) {
   case 'vidt' :
     return "VIDT/USDT" ;
     break;
+  case 'bnx' :
+    return "BNX/AUD" ;
+    break;
   default:
     console.log('undefined crypto.');
 }
