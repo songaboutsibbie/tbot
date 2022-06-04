@@ -33,13 +33,13 @@ axios.get('https://api.taapi.io/macd', {
 
 
   console.log(response.data);
-  console.log ("Starting MACD : " + response.data[0].valueMACD + "    starting MACD Signal : " + response.data[0].valueMACDSignal);
-  if (response.data[0].valueMACD < response.data[0].valueMACDSignal) { console.log("starting position is true"); bullStartingCondition = true; }
+  console.log ("Starting MACD : " + response.data[bt_length].valueMACD + "    starting MACD Signal : " + response.data[bt_length].valueMACDSignal);
+  if (response.data[bt_length].valueMACD < response.data[bt_length].valueMACDSignal) { console.log("starting position is true"); bullStartingCondition = true; }
 
-  console.log ("Finishing MACD : " + response.data[17].valueMACD + "    finishing MACD Signal : " + response.data[17].valueMACDSignal);
-  if (response.data[17].valueMACD > response.data[17].valueMACDSignal) { console.log("finishing position is true");  bullFinishingCondition = true; }
+  console.log ("Finishing MACD : " + response.data[0].valueMACD + "    finishing MACD Signal : " + response.data[0].valueMACDSignal);
+  if (response.data[0].valueMACD > response.data[0].valueMACDSignal) { console.log("finishing position is true");  bullFinishingCondition = true; }
 
-  if (response.data[0].valueMACD < 0 && response.data[17].valueMACD > 0) { console.log("bull strength is STRONG"); bullStrength = "Strong"; }
+  if (response.data[bt_length].valueMACD < 0 && response.data[0].valueMACD > 0) { console.log("bull strength is STRONG"); bullStrength = "Strong"; }
 
   if (bullStartingCondition == true && bullFinishingCondition == true) {
   	console.log("MACDADDY ALERT. BUY! BUY! BUY!");
