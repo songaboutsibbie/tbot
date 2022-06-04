@@ -19,11 +19,15 @@ axios.get('https://api.taapi.io/macd', {
     exchange: "binance",
     symbol: crypto,
     interval: time_period,
-    backtracks: "20",
+    backtracks: "18",
   }
 })
 .then(function (response) {
   console.log(response.data);
+  console.log("response length = " + response.data.length);
+  console.log("macd : " + response.data[1].valueMACD);
+
+
 })
 .catch(function (error) {
   console.log(error.response.data);
