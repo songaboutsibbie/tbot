@@ -29,7 +29,10 @@ client.executeBulkQueries().then(result => {
 
   console.log("\n*** BUY RESULTS ***")
   for (let i=0; i < result.length; i++) {
-    if ( result[i].result.valueMACDHist > 0) { console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); }
+    if ( result[i].result.valueMACDHist > 0)  { 
+      msg = console.log(result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ); 
+      curl -X POST -H 'Content-type: application/json' --data '{"text":"test"}' https://hooks.slack.com/services/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
+    }
   }
 
 }).catch(error => {
