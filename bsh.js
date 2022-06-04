@@ -7,8 +7,8 @@ const taapi = require("taapi");
 const client = taapi.client("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbmdhYm91dHNpYmJpZUBnbWFpbC5jb20iLCJpYXQiOjE2NTA2Nzg1MjEsImV4cCI6Nzk1Nzg3ODUyMX0.kB2EUss32pvD6D3Nv6pg92-ziJ_phjX722Qqx_eHbtU");
 
 // import crypto list & analysis modules
-const mom_indicators = require("./momentum-indicators.js");
-const crypto_lookup = require("./crypto-lookup.js");
+const mom_indicators = require("./helpers/momentum-indicators.js");
+const crypto_lookup = require("./helpers/crypto-lookup.js");
 
 // set crypto to run analysis on based on command line arguments
 const myArgs = process.argv.slice(2);
