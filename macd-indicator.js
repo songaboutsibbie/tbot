@@ -32,7 +32,7 @@ axios.get('https://api.taapi.io/macd', {
 
 
 
-  
+  console.log(response.data);
   console.log ("Starting MACD : " + response.data[0].valueMACD + "    starting MACD Signal : " + response.data[0].valueMACDSignal);
   if (response.data[0].valueMACD < response.data[0].valueMACDSignal) { console.log("starting position is true"); bullStartingCondition = true; }
 
@@ -44,7 +44,7 @@ axios.get('https://api.taapi.io/macd', {
   if (bullStartingCondition == true && bullFinishingCondition == true) {
   	console.log("MACDADDY ALERT. BUY! BUY! BUY!");
   	console.log("Strength is : " + bullStrength);
-  	console.log(response.data);
+  	
   }
 
 })
