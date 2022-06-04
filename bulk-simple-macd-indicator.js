@@ -33,7 +33,7 @@ client.executeBulkQueries().then(result => {
     }
   }
 
-}).then( {
+}).then( result => {
   console.log("Im in a second then");
 }).catch(error => {
     console.log(error);
