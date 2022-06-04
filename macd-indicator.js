@@ -8,10 +8,15 @@ crypto = crypto_lookup.fn_crypto_lookup(myArgs[0]);
 console.log('crypto to run analysis on is: ', crypto);
 time_period = myArgs[1];
 console.log('time period to run analysis on is: ', time_period);
+backtracks_length = 18;
+console.log("going back " + backtracks_length);
 
 
 
 var axios = require('axios');
+var bullStartingCondition = false;
+var bullFinishingCondition = false;
+var bullStrength = "average";
 
 axios.get('https://api.taapi.io/macd', {
   params: {
@@ -19,17 +24,33 @@ axios.get('https://api.taapi.io/macd', {
     exchange: "binance",
     symbol: crypto,
     interval: time_period,
-    backtracks: "18",
+    backtracks: backtracks_length,
   }
 })
 .then(function (response) {
-  console.log(response.data);
-  console.log("response length = " + response.data.length);
-  console.log("macd : " + response.data[1].valueMACD);
+  
+  
+  //check for signal crossover buy indicator;
+
+  console.log ("Starting MACD : " + response.data[0].valueMACD & "    starting MACD Signal : " + response.data[0].valueMACDSignal);
+  if (response.data[0].valueMACD < response.data[0].valueMACDSignal) { bullStartingCondition = true; }
+
+  console.log ("Finishing MACD : " + response.data[backtracks_length].valueMACD & "    finishing MACD Signal : " + response.data[backtracks_length].valueMACDSignal);
+  if (response.data[backtracks_length].valueMACD > response.data[backtracks_length].valueMACDSignal) { bullFinishingCondition = true; };
+
+  if (response.data[0].valueMACD < 0 && response.data[backtracks_length].valueMACD > 0) { bullStrength = "Strong"; 
+
+  if (bullStartingCondition = true && bullFinishingCondition = true) {
+  	console.log("MACDADDY ALERT. BUY! BUY! BUY!");
+  	console.log("Strength is : " + bullStrength);
+  	console.log(response.data);
+  }
 
 
-})
+}
 .catch(function (error) {
   console.log(error.response.data);
 });
+
+console.log("when will this print?");
 
