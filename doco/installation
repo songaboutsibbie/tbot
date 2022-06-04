@@ -1,0 +1,11 @@
+// installs
+sudo apt install npm
+sudo apt-get update
+sudo apt-get install nodejs
+
+// check versions
+npm -v
+node -v
+
+
+// github
