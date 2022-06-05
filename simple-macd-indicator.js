@@ -7,15 +7,11 @@ crypto = myArgs[0];
 time_period = "4h"
 bt_length = 12; // 3 days using 4h time period
 
-console.log('crypto to run analysis on is: ', crypto);
-console.log('time period to run analysis on is: ', time_period);
-console.log("going back " + bt_length);
+console.log("running analysis on " + crypto + "going back " + bt_length + " time periods of " + time_period);
 
+const macd_sigcros = require("./helpers/macd-signalcrossover.js");
 
 var axios = require('axios');
-var bullStartingCondition = false;
-var bullFinishingCondition = false;
-var bullStrength = "average";
 
 axios.get('https://api.taapi.io/macd', {
   params: {
@@ -34,15 +30,21 @@ axios.get('https://api.taapi.io/macd', {
   console.log(response.data[11].valueMACDSignal);
   console.log(response.data[0].valueMACDHist);
   
-  if (response.data[11].valueMACD < response.data[11].valueMACDSignal && response.data[0].valueMACDHist) {
+  if (response.data[11].valueMACD < response.data[11].valueMACDSignal && response.data[0].valueMACDHist > 0) {
     console.log("conditions are true");
+
+    // check recency and only
+    macd_sigcros.fn_recency(response);
+
+    // check sharpness of upturn
+    // fn_macd_rateofchange
+
+    // check how far from 0 line it is
+    // fn_macd_zerolineposition
+
+    // send slack message only if recency and sharpness are of a high enough rating
+    // code here
   }
- /*
-  if (response.data.valueMACDHist > 0) { 
-    console.log("BUY!  Histogram value = " + response.data.valueMACDHist); 
-  }
-  else if (response.data.valueMACDHist < 0) { console.log("SELL!  Histogram value = " + response.data.valueMACDHist); }
-  */
 
 })
 .catch(function (error) {
