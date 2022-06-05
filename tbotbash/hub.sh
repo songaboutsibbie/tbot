@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
  
 cd /home/homestar/tbot
-node bulk-simple-macd-indicator.js 0 buy
+node sell-order-macd.js
+sleep 15
+node buy-order-macd.js 1
+sleep 15
+node buy-order-macd.js 2
+
+
