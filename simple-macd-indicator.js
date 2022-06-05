@@ -23,7 +23,7 @@ axios.get('https://api.taapi.io/macd', {
     exchange: "binance",
     symbol: crypto,
     interval: time_period,
-    backtracks; bt_length,
+    backtracks: bt_length,
   }
 })
 .then(function (response) {
