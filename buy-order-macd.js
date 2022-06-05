@@ -31,7 +31,7 @@ client.executeBulkQueries().then(result => {
 
   var msg = "Buy Order Recommendation\n";
   for (let i=0; i < result.length; i++) {
-    if ( result[i].result.valueMACDHist < 0) {  
+    if ( result[i].result.valueMACDHist > 0) {  
       var msg = msg + "\nBUY : " + result[i].id + " has a MACD histogram value of " + result[i].result.valueMACDHist ;       
     }
   }
