@@ -6,7 +6,7 @@ function fn_recency(response) {
       recency = i+1;
     }  
   }
-  console.log("cross over happened " + recency + " time periods ago");
+  console.log("*** cross over happened " + recency + " time periods ago");
   return recency;
 }
 
