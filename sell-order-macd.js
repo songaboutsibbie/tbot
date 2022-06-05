@@ -30,10 +30,10 @@ client.executeBulkQueries().then(result => {
 
   // if buysell is sell then run analysis on cryptos to sell that i already own as defined in helpers/crypto-list.js
   
-  var msg = null;
+  var msg = "Sell Order Recommendation\n";
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist < 0) {  
-      var msg = msg + "\nSELL Recommendation: " + result[i].id + " has a MACD histogram value of " + result[i].result.valueMACDHist ;     
+      var msg = msg + "\nSELL : " + result[i].id + " has a MACD histogram value of " + result[i].result.valueMACDHist ;     
     } 
   }
   slack.fn_sendmessage(msg);
