@@ -12,8 +12,7 @@ const slack = require("./helpers/slack-notification.js");
 // import macd helper functions
 const macd_sigcros = require("./helpers/macd-signalcrossover.js");
 
-
-console.log("running analysis on " + crypto + "going back " + bt_length + " time periods of " + time_period);
+console.log("* running analysis on " + crypto + " going back " + bt_length + " time periods of " + time_period);
 
 // retrieve macd indicators from taapi
 var axios = require('axios');
@@ -29,7 +28,7 @@ axios.get('https://api.taapi.io/macd', {
 .then(function (response) {
   
   // starting conditions are a) MACD below signal line at start of time period & MACD has risen above signal in most recent time period
-  
+  console.log(resonse.data);
   if (response.data[11].valueMACD < response.data[11].valueMACDSignal && response.data[0].valueMACDHist > 0) {
     console.log("\n ** detected signal cross over.  checking when it happened");
 
@@ -44,7 +43,7 @@ axios.get('https://api.taapi.io/macd', {
 
     // send slack message only if recency and sharpness are of a high enough rating
     if(recency < 6 ) {
-      msg = "Buy " + crypto + "  :  MACD signal crossover occured" + recency + " time periods ago";
+      msg = "Buy " + crypto + "  :  MACD signal crossover occured " + recency + " time periods ago";
       slack.fn_sendmessage(msg);
     }
   }
