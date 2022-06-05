@@ -10,8 +10,16 @@ const crypto_list_helper = require("./helpers/crypto-list.js");
 // setup slack notifications
 const slack = require("./helpers/slack-notification.js");
 
+// set crypto to run analysis on based on command line arguments
+const myArgs = process.argv.slice(2);
+cryptoarg = myArgs[0];
+buysell = myArgs[1];
+
+console.log('using crypto list ' + cryptoarg + " and running a " + buysell " analytis");
+
+
 // Pull in crypto list 1
-crypto_list = crypto_list_helper.fn_crypto_list(1);
+crypto_list = crypto_list_helper.fn_crypto_list(cryptoarg);
 
 
 // Load up 20 queries to execute in bulk
@@ -25,23 +33,29 @@ for (let i=0; i < crypto_list.length; i++) {
 client.executeBulkQueries().then(result => {
   console.log(result);
 
-  var msg = "SELL the following crypto as MACD and dropped to negative"
-  for (let i=0; i < result.length; i++) {
-    if ( result[i].result.valueMACDHist < 0) {  
-      var msg = msg + "\n" + result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ;     
+  // if buysell is buy then run analysis on the crypto list provided in args (1 or 2) which map to helpers/crypto-list.js
+  if (buysell == buy) {
+    var msg = "SELL the following crypto as MACD and dropped to negative"
+    for (let i=0; i < result.length; i++) {
+      if ( result[i].result.valueMACDHist < 0) {  
+        var msg = msg + "\n" + result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ;     
+      }
     }
+    slack.fn_sendmessage(msg);
   }
-  slack.fn_sendmessage(msg);
 
-  var msg = "BUY the following crypto as MACD and has hit positive"
-  for (let i=0; i < result.length; i++) {
-    if ( result[i].result.valueMACDHist > 0)  { 
-      var msg = msg + "\n" + result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ;  
+
+  // if buysell is sell then run analysis on cryptos to sell that i already own as defined in helpers/crypto-list.js
+  if (buysell == sell) {
+    var msg = "SELL the following crypto as MACD and dropped to negative"
+    for (let i=0; i < result.length; i++) {
+      if ( result[i].result.valueMACDHist < 0) {  
+        var msg = msg + "\n" + result[i].id + " has macd.histo value of " + result[i].result.valueMACDHist ;     
+      } 
     }
+    slack.fn_sendmessage(msg);
   }
-  slack.fn_sendmessage(msg);  
 
-  
 
 }).then( result => {
   // this may have a future use
