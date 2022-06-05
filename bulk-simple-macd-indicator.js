@@ -8,7 +8,7 @@ const client = taapi.client("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6In
 const crypto_list_helper = require("./helpers/crypto-list.js");
 
 // setup slack notifications
-const slack = require("./helpers/slack-notification.js");
+const slack = require("./helpers/slack_notification.js");
 
 // set crypto to run analysis on based on command line arguments
 const myArgs = process.argv.slice(2);
