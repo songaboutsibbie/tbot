@@ -34,7 +34,7 @@ client.executeBulkQueries().then(result => {
   console.log(result);
 
   // if buysell is buy then run analysis on the crypto list provided in args (1 or 2) which map to helpers/crypto-list.js
-  if (buysell == buy) {
+  if (buysell == "buy") {
     var msg = "SELL the following crypto as MACD and dropped to negative"
     for (let i=0; i < result.length; i++) {
       if ( result[i].result.valueMACDHist < 0) {  
@@ -46,7 +46,7 @@ client.executeBulkQueries().then(result => {
 
 
   // if buysell is sell then run analysis on cryptos to sell that i already own as defined in helpers/crypto-list.js
-  if (buysell == sell) {
+  if (buysell == "sell") {
     var msg = "SELL the following crypto as MACD and dropped to negative"
     for (let i=0; i < result.length; i++) {
       if ( result[i].result.valueMACDHist < 0) {  
