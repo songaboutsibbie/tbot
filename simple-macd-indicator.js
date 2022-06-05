@@ -37,7 +37,7 @@ axios.get('https://api.taapi.io/macd', {
   if (response.data[bt_length-1].valueMACD < response.data[bt_length-1].valueMACDSignal && response.data[0].valueMACDHist) {
     console.log("conditions are true");
   }
-
+ /*
   if (response.data.valueMACDHist > 0) { 
     console.log("BUY!  Histogram value = " + response.data.valueMACDHist); 
   }
