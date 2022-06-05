@@ -7,12 +7,13 @@ const taapi = require("taapi");
 const client = taapi.client("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbmdhYm91dHNpYmJpZUBnbWFpbC5jb20iLCJpYXQiOjE2NTA2Nzg1MjEsImV4cCI6Nzk1Nzg3ODUyMX0.kB2EUss32pvD6D3Nv6pg92-ziJ_phjX722Qqx_eHbtU");
 
 // setup slack notifications
-const slack = require("./helpers/slack_notification.js");
+const slack = require("./helpers/slack-notification.js");
 
 
 // get list of owned cryptos using value of 0
 const crypto_list_helper = require("./helpers/crypto-list.js");
 crypto_list = crypto_list_helper.fn_get_crypto_list(0);
+
 
 
 console.log("Executing sell order recommendations against owned crypto list");
@@ -24,12 +25,10 @@ for (let i=0; i < crypto_list.length; i++) {
 
 }
 
-//execute queries and display buy or sell results
+//execute queries.  If histo value is negative send sell order recommendation to slack
 client.executeBulkQueries().then(result => {
   console.log(result);
 
-  // if buysell is sell then run analysis on cryptos to sell that i already own as defined in helpers/crypto-list.js
-  
   var msg = "Sell Order Recommendation\n";
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist < 0) {  

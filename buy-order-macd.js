@@ -7,7 +7,7 @@ const taapi = require("taapi");
 const client = taapi.client("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbmdhYm91dHNpYmJpZUBnbWFpbC5jb20iLCJpYXQiOjE2NTA2Nzg1MjEsImV4cCI6Nzk1Nzg3ODUyMX0.kB2EUss32pvD6D3Nv6pg92-ziJ_phjX722Qqx_eHbtU");
 
 // setup slack notifications
-const slack = require("./helpers/slack_notification.js");
+const slack = require("./helpers/slack-notification.js");
 
 
 // get list of owned cryptos using value passed in as an arg
