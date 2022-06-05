@@ -31,7 +31,7 @@ axios.get('https://api.taapi.io/macd', {
   console.log(response.data[0].valueMACDHist);
   
   if (response.data[11].valueMACD < response.data[11].valueMACDSignal && response.data[0].valueMACDHist > 0) {
-    console.log("detected signal cross over.  checking when it happened\n");
+    console.log("\n ** detected signal cross over.  checking when it happened");
 
     // check recency and only
     macd_sigcros.fn_recency(response);
