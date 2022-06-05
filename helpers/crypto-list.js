@@ -8,8 +8,8 @@ const crypto_list_two = ["KNC/USDT", "POWR/USDT", "TORN/USDT", "VIDT/USDT", "BNX
 
 
 if (priority == 0 ) { return crypto_list_owned ; }
-else if (priority == 2 ) { return crypto_list_one ; }
-else if (priority == 0) { return crypto_list_two ; }
+else if (priority == 1 ) { return crypto_list_one ; }
+else if (priority == 2) { return crypto_list_two ; }
 else { return null ; }
 
 }
