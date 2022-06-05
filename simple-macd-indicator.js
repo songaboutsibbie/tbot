@@ -30,11 +30,11 @@ axios.get('https://api.taapi.io/macd', {
   
   // starting conditions are a) MACD below signal line at start of time period & MACD has risen above signal in most recent time period
   console.log(response.data);
-  console.log(esponse.data[bt_length-1].valueMACD);
-  console.log(response.data[bt_length-1].valueMACDSignal);
+  console.log(esponse.data[11].valueMACD);
+  console.log(response.data[11].valueMACDSignal);
   console.log(esponse.data[0].valueMACDHist);
   
-  if (response.data[bt_length-1].valueMACD < response.data[bt_length-1].valueMACDSignal && response.data[0].valueMACDHist) {
+  if (response.data[11].valueMACD < response.data[11].valueMACDSignal && response.data[0].valueMACDHist) {
     console.log("conditions are true");
   }
  /*
