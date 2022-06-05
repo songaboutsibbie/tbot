@@ -29,7 +29,7 @@ for (let i=0; i < crypto_list.length; i++) {
 client.executeBulkQueries().then(result => {
   console.log(result);
 
-  var msg = "Sell Order Recommendation\n";
+  var msg = "Buy Order Recommendation\n";
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist < 0) {  
       var msg = msg + "\nBUY : " + result[i].id + " has a MACD histogram value of " + result[i].result.valueMACDHist ;       
