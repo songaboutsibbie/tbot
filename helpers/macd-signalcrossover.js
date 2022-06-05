@@ -1,5 +1,6 @@
 function fn_recency(response) {
 
+  console.log(response.data.length);
   for (let i=0; i < response.data.length; i++) { 
     if (response.data[i].valueMACD > response.data[i].valueMACDSignal) { 
       recency = i+1;
