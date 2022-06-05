@@ -1,16 +1,15 @@
-// macd
-
+// provide a buy recommendation using macd algo
 
 // set crypto and time period to run analysis on based on command line arguments
-const crypto_lookup = require("./helpers/crypto-lookup.js");
-const myArgs = process.argv.slice(2);
-crypto = crypto_lookup.fn_crypto_lookup(myArgs[0]);
-console.log('crypto to run analysis on is: ', crypto);
-time_period = myArgs[1];
-console.log('time period to run analysis on is: ', time_period);
-bt_length = 18;
-console.log("going back " + bt_length);
 
+const myArgs = process.argv.slice(2);
+crypto = myArgs[0];
+time_period = "4h"
+bt_length = 12; // 3 days using 4h time period
+
+console.log('crypto to run analysis on is: ', crypto);
+console.log('time period to run analysis on is: ', time_period);
+console.log("going back " + bt_length);
 
 
 var axios = require('axios');
@@ -24,13 +23,22 @@ axios.get('https://api.taapi.io/macd', {
     exchange: "binance",
     symbol: crypto,
     interval: time_period,
+    backtracks; bt_length,
   }
 })
 .then(function (response) {
-  //check for signal crossover buy indicator;
+  
+  // starting conditions are a) MACD below signal line at start of time period & MACD has risen above signal in most recent time period
+  console.log(response.data);
 
-  if (response.data.valueMACDHist > 0) { console.log("BUY!  Histogram value = " + response.data.valueMACDHist); }
+  /*
+  if (response.data.valueMACD)
+
+  if (response.data.valueMACDHist > 0) { 
+    console.log("BUY!  Histogram value = " + response.data.valueMACDHist); 
+  }
   else if (response.data.valueMACDHist < 0) { console.log("SELL!  Histogram value = " + response.data.valueMACDHist); }
+  */
 
 })
 .catch(function (error) {
@@ -38,4 +46,3 @@ axios.get('https://api.taapi.io/macd', {
 });
 
 
-console.log("when will this print") ;
