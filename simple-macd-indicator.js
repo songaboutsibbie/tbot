@@ -28,7 +28,7 @@ axios.get('https://api.taapi.io/macd', {
 .then(function (response) {
   
   // starting conditions are a) MACD below signal line at start of time period & MACD has risen above signal in most recent time period
-  console.log(resonse.data);
+  console.log(response.data);
   if (response.data[11].valueMACD < response.data[11].valueMACDSignal && response.data[0].valueMACDHist > 0) {
     console.log("\n ** detected signal cross over.  checking when it happened");
 
