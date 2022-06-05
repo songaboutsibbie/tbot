@@ -16,7 +16,7 @@ const myArgs = process.argv.slice(2);
 cryptoarg = myArgs[0];
 crypto_list = crypto_list_helper.fn_get_crypto_list(cryptoarg);
 
-console.log("Executing buy order recommendations against owned crypto list");
+console.log("Executing buy order recommendations against crypto list " + cryptoarg);
 
 // Load up 20 queries to execute in bulk
 client.initBulkQueries();
