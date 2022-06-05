@@ -15,7 +15,7 @@ const myArgs = process.argv.slice(2);
 cryptoarg = myArgs[0];
 buysell = myArgs[1];
 
-console.log('using crypto list ' + cryptoarg + " and running a " + buysell " analytis");
+console.log("using crypto list " + cryptoarg + " and running a " + buysell + " analytis");
 
 
 // Pull in crypto list 1
