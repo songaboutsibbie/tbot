@@ -6,7 +6,7 @@ crypto = myArgs[0];
 time_period = "4h"
 bt_length = 12; // 3 days using 4h time period
 
-console.log("Argument passed in is: " + myArgs[0]);
+console.log("Argument passed in is: " + crypto);
 // setup slack notifications
 const slack = require("./helpers/slack-notification.js");
 
