@@ -7,4 +7,4 @@ echo ${arrCrypto[1]}
 echo ${arrCrypto[2]}
 
 
-node simple-macd-indicator.js "BTC/USDT"
+node simple-macd-indicator.js ${arrCrypto[0]}
