@@ -9,4 +9,10 @@ function fn_recency(response) {
   return recency;
 }
 
-module.exports = { fn_recency } ;
+
+function fn_rateOfIncrease(response) {
+
+  return "very fast";
+}
+
+module.exports = { fn_recency, fn_rateOfIncrease } ;
