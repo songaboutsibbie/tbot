@@ -6,6 +6,7 @@ crypto = myArgs[0];
 time_period = "4h"
 bt_length = 12; // 3 days using 4h time period
 
+console.log("Argument passed in is: " + myArgs[0]);
 // setup slack notifications
 const slack = require("./helpers/slack-notification.js");
 
@@ -33,7 +34,7 @@ axios.get('https://api.taapi.io/macd', {
 
     // check recency and only
     recency = macd_sigcros.fn_recency(response);
-    console.log("** Cross over occured "+ recency + " time periods ago.  Buy trigger happens at less 6");
+    console.log("** Cross over occured "+ recency + " time periods ago.  Buy trigger happens at less than 6");
 
     // check sharpness of upturn
     rateOfIncrease = macd_sigcros.fn_rateOfIncrease(response);
