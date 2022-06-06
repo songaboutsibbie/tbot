@@ -11,7 +11,7 @@ const slack = require("./helpers/slack-notification.js");
 
 
 // get list of owned cryptos using value of 0
-const crypto_list_helper = require("./helpers/crypto-list.js");
+const crypto_list_helper = require("./helpers/owned-crypto-list.js");
 crypto_list = crypto_list_helper.fn_get_crypto_list();
 
 console.log("Executing sell order recommendations against owned crypto list");
