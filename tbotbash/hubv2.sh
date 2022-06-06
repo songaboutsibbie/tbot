@@ -2,6 +2,6 @@
  
 
 readarray -t arrCrypto < ~/tbot/data/cryptolist.txt
-echo ${arrText[0]}
-echo ${arrText[1]}
-echo ${arrText[2]}
+echo ${arrCrypto[0]}
+echo ${arrCrypto[1]}
+echo ${arrCrypto[2]}
