@@ -1,11 +1,11 @@
 function fn_recency(response) {
-
+  // determine at what point the signal line cross over occured
   for (let i=0; i < response.data.length; i++) { 
     if (response.data[i].valueMACD > response.data[i].valueMACDSignal) { 
       recency = i+1;
     }  
   }
-  console.log("*** cross over happened " + recency + " time periods ago");
+  //console.log("*** cross over happened " + recency + " time periods ago");
   return recency;
 }
 
