@@ -36,7 +36,8 @@ axios.get('https://api.taapi.io/macd', {
     recency = macd_sigcros.fn_recency(response);
 
     // check sharpness of upturn
-    // fn_macd_rateofchange
+    rateOfIncrease = macd_sigcros.fn_rateOfIncrease(response);
+    console.log("rate of increase : " + rateOfIncrease);
 
     // check how far from 0 line it is
     // fn_macd_zerolineposition
