@@ -25,7 +25,9 @@ function fn_rateOfIncrease(response) {
   averageIncrease = totalIncrease / lowPointPosition;
   console.log("Average Increase " + averageIncrease);
 
-  return "very fast";
+  rateOfIncrease = (averageIncrease / totalIncrease ) * 100;
+
+  return rateOfIncrease;
 }
 
 module.exports = { fn_recency, fn_rateOfIncrease } ;
