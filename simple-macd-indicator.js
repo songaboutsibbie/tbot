@@ -6,7 +6,7 @@ crypto = myArgs[0];
 time_period = "4h"
 bt_length = 12; // 3 days using 4h time period
 
-console.log("Argument passed in is: " + crypto);
+
 // setup slack notifications
 const slack = require("./helpers/slack-notification.js");
 
@@ -25,7 +25,7 @@ axios.get('https://api.taapi.io/macd', {
   }
 })
 .then(function (response) {
-  
+  console.log("Argument passed in is: " + crypto);
   // starting conditions are a) MACD below signal line at start of time period & MACD has risen above signal in most recent time period
   console.log(response.data);
   console.log("\n** Running analysis on " + crypto + " going back " + bt_length + " time periods of " + time_period);
