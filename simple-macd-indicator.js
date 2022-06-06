@@ -12,8 +12,6 @@ const slack = require("./helpers/slack-notification.js");
 // import macd helper functions
 const macd_sigcros = require("./helpers/macd-signalcrossover.js");
 
-console.log("* running analysis on " + crypto + " going back " + bt_length + " time periods of " + time_period);
-
 // retrieve macd indicators from taapi
 var axios = require('axios');
 axios.get('https://api.taapi.io/macd', {
@@ -29,8 +27,9 @@ axios.get('https://api.taapi.io/macd', {
   
   // starting conditions are a) MACD below signal line at start of time period & MACD has risen above signal in most recent time period
   console.log(response.data);
+  console.log("** Running analysis on " + crypto + " going back " + bt_length + " time periods of " + time_period);
   if (response.data[11].valueMACD < response.data[11].valueMACDSignal && response.data[0].valueMACDHist > 0) {
-    console.log("\n * detected signal cross over.  checking when it happened");
+    console.log("\n ** Detected signal cross over.  checking when it happened");
 
     // check recency and only
     recency = macd_sigcros.fn_recency(response);
@@ -38,7 +37,7 @@ axios.get('https://api.taapi.io/macd', {
 
     // check sharpness of upturn
     rateOfIncrease = macd_sigcros.fn_rateOfIncrease(response);
-    console.log("*** Rate of increase (%) : " + rateOfIncrease + "%.  Buy trigger happens at greater than 7%");
+    console.log("** Rate of increase (%) : " + rateOfIncrease + "%.  Buy trigger happens at greater than 7%");
 
     // check how far from 0 line it is
     // fn_macd_zerolineposition
