@@ -13,9 +13,6 @@ const slack = require("./helpers/slack-notification.js");
 // import macd helper functions
 const macd_sigcros = require("./helpers/macd-signalcrossover.js");
 
-const crypto_lookup = require("./helpers/crypto-lookup.js");
-crypto = crypto_lookup.fn_crypto_lookup(myArgs[0]);
-
 // retrieve macd indicators from taapi
 var axios = require('axios');
 axios.get('https://api.taapi.io/macd', {
