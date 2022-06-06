@@ -30,15 +30,15 @@ axios.get('https://api.taapi.io/macd', {
   // starting conditions are a) MACD below signal line at start of time period & MACD has risen above signal in most recent time period
   console.log(response.data);
   if (response.data[11].valueMACD < response.data[11].valueMACDSignal && response.data[0].valueMACDHist > 0) {
-    console.log("\n ** detected signal cross over.  checking when it happened");
+    console.log("\n * detected signal cross over.  checking when it happened");
 
     // check recency and only
     recency = macd_sigcros.fn_recency(response);
-    console.log("Cross over occured "+ recency + " time periods ago.  Buy trigger happens at less 6");
+    console.log("** Cross over occured "+ recency + " time periods ago.  Buy trigger happens at less 6");
 
     // check sharpness of upturn
     rateOfIncrease = macd_sigcros.fn_rateOfIncrease(response);
-    console.log("rate of increase (%) : " + rateOfIncrease + "%.  Buy trigger happens at greater than 7%");
+    console.log("*** Rate of increase (%) : " + rateOfIncrease + "%.  Buy trigger happens at greater than 7%");
 
     // check how far from 0 line it is
     // fn_macd_zerolineposition
