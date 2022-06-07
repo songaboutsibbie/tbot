@@ -29,7 +29,7 @@ client.executeBulkQueries().then(result => {
 
   for (let i=0; i < result.length; i++) {
     if ( result[i].result.valueMACDHist < 0) {  
-      msg + "\nSELL : " + result[i].id + " has a MACD histogram value of " + result[i].result.valueMACDHist ;  
+      msg = "\nSELL : " + result[i].id + " has a MACD histogram value of " + result[i].result.valueMACDHist ;  
       slack.fn_sendmessage(msg);   
     } 
   }
