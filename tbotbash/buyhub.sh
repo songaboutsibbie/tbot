@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/homestar/tbot
+cd ~/tbot
 IFS=$'\n' read -d '' -r -a arrCrypto < ~/tbot/data/buylist.txt
 
 for i in "${arrCrypto[@]}"
