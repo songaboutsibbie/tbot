@@ -34,17 +34,17 @@ axios.get('https://api.taapi.io/macd', {
 
     // check recency and only
     recency = macd_sigcros.fn_recency(response);
-    console.log("** Cross over occured "+ recency + " time periods ago.  Buy trigger happens at less than 6");
+    console.log("** Cross over occured "+ recency + " time periods ago.  Buy trigger happens at less than 3");
 
     // check sharpness of upturn
     rateOfIncrease = macd_sigcros.fn_rateOfIncrease(response);
-    console.log("** Rate of increase (%) : " + rateOfIncrease + "%.  Buy trigger happens at greater than 7%");
+    console.log("** Rate of increase (%) : " + rateOfIncrease + "%.  Buy trigger happens at greater than 10%");
 
     // check how far from 0 line it is
     // fn_macd_zerolineposition
 
     // send slack message only if recency and sharpness are of a high enough rating
-    if(recency < 4 && rateOfIncrease > 8) {
+    if(recency < 3 && rateOfIncrease > 10) {
       msg = "Buy " + crypto + "  :  MACD signal crossover occured " + recency + " time periods ago at an increase of " + rateOfIncrease + "%";
       slack.fn_sendmessage(msg);
     }
