@@ -3,7 +3,7 @@
 // set crypto (from args) & hard code time period and backtrack perios
 const myArgs = process.argv.slice(2);
 crypto = myArgs[0];
-time_period = "4h"
+time_period = "1h"
 bt_length = 12; // 3 days using 4h time period
 
 
