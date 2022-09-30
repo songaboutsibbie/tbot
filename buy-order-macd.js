@@ -47,7 +47,7 @@ axios.get('https://api.taapi.io/macd', {
     if(recency < 3 && rateOfIncrease > 10) {
       msg = "Buy " + crypto + "  :  MACD signal crossover occured " + recency 
         + " time periods ago at an increase of " + rateOfIncrease + "%" 
-        + "\nhttps://www.tradingview.com/chart/719ixDGW/?symbol=BINANCE%3" + crypto;
+        + "\nhttps://www.tradingview.com/chart/719ixDGW/?symbol=BINANCE%3A" + crypto.split('/')[0] + "USD";
       slack.fn_sendmessage(msg);
     }
   }
