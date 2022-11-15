@@ -3,8 +3,8 @@
 // set crypto (from args) & hard code time period and backtrack perios
 const myArgs = process.argv.slice(2);
 crypto = myArgs[0];
-time_period = "1h"
-bt_length = 12; // 3 days using 4h time period
+time_period = "15m"
+bt_length = 16; // 3 hours using 15 min time period
 
 
 // setup slack notifications
