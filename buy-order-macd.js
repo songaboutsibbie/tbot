@@ -25,10 +25,10 @@ axios.get('https://api.taapi.io/macd', {
   }
 })
 .then(function (response) {
-  console.log("Argument passed in is: " + crypto);
+  console.log("** Argument passed in is: " + crypto);
   // starting conditions are a) MACD below signal line at start of time period & MACD has risen above signal in most recent time period
   // console.log(response.data);
-  console.log("\n** Running analysis on " + crypto + " going back " + bt_length + " time periods of " + time_period);
+  console.log("** Running analysis on " + crypto + " going back " + bt_length + " time periods of " + time_period);
   if (response.data[bt_length-1].valueMACD < response.data[bt_length-1].valueMACDSignal && response.data[0].valueMACDHist > 0) {
     console.log("** Detected signal cross over.  checking when it happened");
 
