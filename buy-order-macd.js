@@ -4,7 +4,7 @@
 const myArgs = process.argv.slice(2);
 crypto = myArgs[0];
 time_period = "15m"
-bt_length = 16; // 3 hours using 15 min time period
+bt_length = 8; // 2 hours using 15 min time period
 
 
 // setup slack notifications
@@ -29,12 +29,12 @@ axios.get('https://api.taapi.io/macd', {
   // starting conditions are a) MACD below signal line at start of time period & MACD has risen above signal in most recent time period
   // console.log(response.data);
   console.log("\n** Running analysis on " + crypto + " going back " + bt_length + " time periods of " + time_period);
-  if (response.data[11].valueMACD < response.data[11].valueMACDSignal && response.data[0].valueMACDHist > 0) {
+  if (response.data[bt_length-1].valueMACD < response.data[bt_length-1].valueMACDSignal && response.data[0].valueMACDHist > 0) {
     console.log("** Detected signal cross over.  checking when it happened");
 
-    // check recency and only
+    // determeine how recent the cross over occured.
     recency = macd_sigcros.fn_recency(response);
-    console.log("** Cross over occured "+ recency + " time periods ago.  Buy trigger happens at less than 3");
+    console.log("** Cross over occured "+ recency + " time periods ago");
 
     // check sharpness of upturn
     rateOfIncrease = macd_sigcros.fn_rateOfIncrease(response);
