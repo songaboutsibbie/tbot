@@ -43,4 +43,4 @@ function fn_rateOfIncrease(results) {
   return rateOfIncrease;
 }
 
-module.exports = { fn_recency, fn_rateOfIncrease, fn_crossover } ;
+module.exports = { fn_recency, fn_rateOfIncrease, fn_checkCrossover } ;
