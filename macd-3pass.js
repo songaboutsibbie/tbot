@@ -36,11 +36,15 @@ client.executeBulkQueries().then(result => {
   console.log("** Argument passed in is: " + crypto);
   console.log(result);
   console.log(result[0].result.valueMACD);
-  console.log(result.length);
+
+  // set start and finish positions of each macd interval type
+  startPos15m = 0; endPos15m = 2;
+  startPos4h = 3; endPos4h = 5;
+  startPos1d = 6; endPos1d = 8;
 
 
 // 1st check : did macd cross the signal line in the withing the last 4 15min interval data points
-    if ( macd_helper.fn_checkCrossover(result) == true ) { indicator_score = 100} else { indicator_score = -1000; }
+    if ( macd_helper.fn_checkCrossover(result, startPos15m, endPos15m) == true ) { indicator_score = 100} else { indicator_score = -1000; }
    
 
   console.log("indicator score : " + indicator_score);
