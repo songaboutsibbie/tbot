@@ -38,15 +38,18 @@ client.executeBulkQueries().then(result => {
   console.log(result[0].result.valueMACD);
 
   // set start and finish positions of each macd interval type
-  startPos15m = 0; endPos15m = 2; startPos4h = 3; endPos4h = 5; startPos1d = 6; endPos1d = 8;
+  startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos1d = 6; endPos1d = 8;
 
 
   // 1st wave : check if macd cross the signal line in the withing the last 4 15min interval data points
-  if ( macd_helper.fn_checkCrossover(result, startPos15m, endPos15m) == true ) { indicator_score = 100} else { indicator_score = -1000; }
+  if ( macd_helper.fn_checkCrossover(result, startPos1, endPos1) == true ) { indicator_score = 100} else { indicator_score = -1000; }
 
   // 2nd wave  : if trending up +50 ; if below signal cross over + trending up +100 ; if neither reste to -1000
-  if ( macd_helper.fn_checkTrend(result, startPos15m, endPos15m) == true && result[endPos4h].result.valueMACDHist < 0) 
-    { indicator_score = indicator_score + 100 ; console.log("4h got 100 points")}
+  if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true && result[endPos2].result.valueMACDHist < 0) 
+    { 
+      indicator_score = indicator_score + 100 ; 
+      console.log("4h got 100 points"); // debug log
+    }
   else { indicator_score = -1000 ;}
 
    
