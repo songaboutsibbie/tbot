@@ -37,7 +37,7 @@ client.executeBulkQueries().then(result => {
   console.log(result);
   console.log(result[0].result.valueMACD);
   console.log(typeof result[0].result.valueMACD);
-  console.log(typeof Number(result[0].result.valueMACD);
+  console.log(typeof Number(result[0].result.valueMACD));
 
   // set start and finish positions of each macd interval type
   startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos3 = 6; endPos3 = 8;
