@@ -12,7 +12,7 @@ function fn_checkTrend(result, startPos, endPos) {
   console.log("checking trend with endPos of " + endPos + " and startPos of " + startPos);  // debug comments
   trend = false;
 
-  for (let i=endPos; i > startPos+1; i--) {
+  for (let i=endPos; i > startPos; i--) {
     console.log("MACD value " + result[i].result.valueMACD)
     if (result[i].result.valueMACD < result[i-1].result.valueMACD) {  trend = true } else { trend = false }
   }
