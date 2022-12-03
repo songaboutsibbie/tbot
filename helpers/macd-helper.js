@@ -3,7 +3,7 @@ function fn_checkCrossover(result, startPos, endPos) {
   console.log("checking crossover : is " + result[endPos].result.valueMACDHist + " < 0  && " + result[startPos].result.valueMACDHist + " > 0");  // debug
 
   if (result[endPos].result.valueMACDHist < 0 && result[startPos].result.valueMACDHist > 0) { console.log("crossover true") ; return true; }
-  else { console.log("crossover false") ; return false ; }
+  else { console.log("Crossover set to : false") ; return false ; }
    
 }
 
