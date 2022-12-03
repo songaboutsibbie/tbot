@@ -40,7 +40,7 @@ client.executeBulkQueries().then(result => {
   // set start and finish positions of each macd interval type
   startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos3 = 6; endPos3 = 8;
 
-  console.log("*** commencing first wave ***"); //debug log
+  console.log("\n*** commencing first wave ***"); //debug log
   // 1st wave : check if macd cross the signal line in the withing the last 4 15min interval data points
   if ( macd_helper.fn_checkCrossover(result, startPos1, endPos1) == true ) { 
     indicator_score = 100
@@ -48,7 +48,7 @@ client.executeBulkQueries().then(result => {
   } 
   else { indicator_score = -1000; }
 
-  console.log("*** commencing second wave ***"); //debug log
+  console.log("\n*** commencing second wave ***"); //debug log
   // 2nd wave  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 22 | just trending up + 10
   if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true && result[endPos2].result.valueMACDHist < 0) { 
     indicator_score = indicator_score + 100 ; 
@@ -57,7 +57,7 @@ client.executeBulkQueries().then(result => {
   //else if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true &&  macd_helper.fn_checkCrossover(result, startPos2, endPos2) == true) { indicator_score = indicator_score + 22; }
   else { indicator_score = -1000 ; }
 
-  console.log("*** commencing third wave ***"); //debug log
+  console.log("\n*** commencing third wave ***"); //debug log
   // 3rd wave  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 33 | just trending up + 10
   if ( macd_helper.fn_checkTrend(result, startPos3, endPos3) == true && result[endPos3].result.valueMACDHist < 0) { 
     indicator_score = indicator_score + 100 ; 
