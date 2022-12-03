@@ -42,17 +42,30 @@ client.executeBulkQueries().then(result => {
 
 
   // 1st wave : check if macd cross the signal line in the withing the last 4 15min interval data points
-  if ( macd_helper.fn_checkCrossover(result, startPos1, endPos1) == true ) { indicator_score = 100} else { indicator_score = -1000; }
+  if ( macd_helper.fn_checkCrossover(result, startPos1, endPos1) == true ) { 
+    indicator_score = 100
+    console.log("15 min got 100 points"); // debug log
+  } 
+  else { indicator_score = -1000; }
 
-  // 2nd wave  : if trending up +50 ; if below signal cross over + trending up +100 ; if neither reste to -1000
-  if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true && result[endPos2].result.valueMACDHist < 0) 
-    { 
-      indicator_score = indicator_score + 100 ; 
-      console.log("4h got 100 points"); // debug log
-    }
-  else { indicator_score = -1000 ;}
+  // 2nd wave  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 22 | just trending up + 10
+  if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true && result[endPos2].result.valueMACDHist < 0) { 
+    indicator_score = indicator_score + 100 ; 
+    console.log("4h got 100 points"); // debug log
+  } 
+  //else if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true &&  macd_helper.fn_checkCrossover(result, startPos2, endPos2) == true) { indicator_score = indicator_score + 22; }
+  else { indicator_score = -1000 ; }
 
-   
+
+  // 3rd wave  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 33 | just trending up + 10
+  if ( macd_helper.fn_checkTrend(result, startPos3, endPos3) == true && result[endPos3].result.valueMACDHist < 0) { 
+    indicator_score = indicator_score + 100 ; 
+    console.log("1d got 100 points"); // debug log
+  }
+  else if ( macd_helper.fn_checkTrend(result, startPos3, endPos3) == true) {
+    indicator_score = indicator_score + 10 ; 
+    console.log("1d got 10 points"); // debug log
+  } else { indicator_score = -1000 ; } 
 
   console.log("indicator score : " + indicator_score);
 
