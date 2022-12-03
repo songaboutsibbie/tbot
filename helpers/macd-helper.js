@@ -7,6 +7,10 @@ function fn_checkCrossover(result, startPos, endPos) {
    
 }
 
+function fn_checkTrend(result, startPos, endPos) {
+  return true;
+}
+
 function fn_recency(result) {
   // determine at what point the signal line cross over occured
   for (let i=0; i < result.result.length; i++) { 
@@ -44,4 +48,4 @@ function fn_rateOfIncrease(result) {
   return rateOfIncrease;
 }
 
-module.exports = { fn_recency, fn_rateOfIncrease, fn_checkCrossover } ;
+module.exports = { fn_recency, fn_rateOfIncrease, fn_checkCrossover, fn_checkTrend } ;
