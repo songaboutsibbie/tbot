@@ -7,8 +7,16 @@ function fn_checkCrossover(result, startPos, endPos) {
    
 }
 
+// this function confirms that the value of MACD increases over time (array is sorted in reverse chronological order)
 function fn_checkTrend(result, startPos, endPos) {
-  return true;
+  console.log("endPos :" + endPos + " -- startPos :" + startPos);  // debug comments
+s
+  for (let i=endPos; i < startPos+1; i--) {
+    console.log("MACD value " + result[i].result.valueMACD)
+    if (result[i].result.valueMACD < result[i-1].result.valueMACD) {  trend = true } else { trend = false }
+  }
+
+  return trend;
 }
 
 function fn_recency(result) {
