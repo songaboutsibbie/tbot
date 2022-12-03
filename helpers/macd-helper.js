@@ -24,7 +24,7 @@ function fn_rateOfIncrease(result) {
 
   // find the point at which MACD was at its lowest value.  
   for (let i=0; i < result.result.length; i++) { 
-    if (result[i].result..alueMACD < lowPoint) { lowPoint = result[i].result.valueMACD; lowPointPosition = i+1; }  
+    if (result[i].result.valueMACD < lowPoint) { lowPoint = result[i].result.valueMACD; lowPointPosition = i+1; }  
   }
   
   // Calculate the total increase between lowest MACD value and most recent MACD Value
