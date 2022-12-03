@@ -86,6 +86,12 @@ client.executeBulkQueries().then(result => {
 
   console.log("indicator score : " + indicator_score);
 
+  if(indicator_score > 99) {
+    msg = "Buy " + crypto + "  :  MACD signal crossover occured.  \nScore =  " + indicator_score 
+    + "\nhttps://www.tradingview.com/chart/719ixDGW/?symbol=BINANCE%3A" + crypto.split('/')[0] + "USD";
+    slack.fn_sendmessage(msg);
+  }  
+
 }).catch(error => {
     console.log(error);
 });
