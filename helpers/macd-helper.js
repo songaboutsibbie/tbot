@@ -1,16 +1,16 @@
-function fn_checkCrossover(results) {
+function fn_checkCrossover(result) {
   //check whether the MACDHist was negative at start of results and positrive and end of reuslts indicating a crossover has occured
-  console.log("checking crossover : " + results[2].result.valueMACDHist + " > " + results[0].result.valueMACDHist);
+  console.log("checking crossover : " + result[2].result.valueMACDHist + " > " + results[0].result.valueMACDHist);
 
-  if (results[2].result.valueMACDHist < 0 && results[0].result.valueMACDHist > 0) { return true; }
+  if (result[2].result.valueMACDHist < 0 && result[0].result.valueMACDHist > 0) { return true; }
   else { return false ; }
    
 }
 
-function fn_recency(results) {
+function fn_recency(result) {
   // determine at what point the signal line cross over occured
-  for (let i=0; i < response.data.length; i++) { 
-    if (response.data[i].valueMACD > response.data[i].valueMACDSignal) { 
+  for (let i=0; i < result.result.length; i++) { 
+    if (result[i].result.valueMACD > result[i].result.valueMACDSignal) { 
       recency = i+1;
     }  
   }
@@ -19,16 +19,16 @@ function fn_recency(results) {
 }
 
 
-function fn_rateOfIncrease(results) {
-  var lowPoint = response.data[0].valueMACD;
+function fn_rateOfIncrease(result) {
+  var lowPoint = result[0].result.valueMACD;
 
   // find the point at which MACD was at its lowest value.  
-  for (let i=0; i < response.data.length; i++) { 
-    if (response.data[i].valueMACD < lowPoint) { lowPoint = response.data[i].valueMACD; lowPointPosition = i+1; }  
+  for (let i=0; i < result.result.length; i++) { 
+    if (result[i].result..alueMACD < lowPoint) { lowPoint = result[i].result.valueMACD; lowPointPosition = i+1; }  
   }
   
   // Calculate the total increase between lowest MACD value and most recent MACD Value
-  totalIncrease = response.data[0].valueMACD - lowPoint;
+  totalIncrease = result[i].result.valueMACD - lowPoint;
 
   // Calculate the average increase
   averageIncrease = totalIncrease / lowPointPosition;
