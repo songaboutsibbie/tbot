@@ -33,11 +33,8 @@ client.addBulkQuery("macd", "binance", crypto, "1d", null, 1);
 client.addBulkQuery("macd", "binance", crypto, "1d", null, 2);
 
 client.executeBulkQueries().then(result => {
-  console.log("** Argument passed in is: " + crypto);
-  console.log(result);
-  console.log(typeof result[0].result.valueMACD);
-  console.log(typeof result[0].result.valueMACDHist);
-  console.log(typeof result[0].result.valueMACDSignal);
+  console.log("** Argument passed in is: " + crypto); // debug log
+  console.log(result);  // debug log
 
   // set start and finish positions of each macd interval type
   startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos3 = 6; endPos3 = 8;
@@ -51,24 +48,36 @@ client.executeBulkQueries().then(result => {
   else { indicator_score = -1000; console.log("first wave failed to score")}
 
   console.log("\n*** commencing second wave ***"); //debug log
-  // 2nd wave  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 22 | just trending up + 10
+  // 2nd wave  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 50 | just trending up + 10
   if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true && result[endPos2].result.valueMACDHist < 0) { 
     indicator_score = indicator_score + 100 ; 
-    console.log("4h got 100 points"); // debug log
+    console.log("second wave trend up and below signal line"); // debug log
   } 
-  //else if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true &&  macd_helper.fn_checkCrossover(result, startPos2, endPos2) == true) { indicator_score = indicator_score + 22; }
-  else { indicator_score = -1000 ; }
+  else if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true &&  macd_helper.fn_checkCrossover(result, startPos2, endPos2) == true) { 
+    indicator_score = indicator_score + 50; 
+    console.log("second wave trend up and signal line crossed over recently"); // debug log
+  }
+  else if ( macd_helper.fn_checkTrend(result, startPos2, endPos2) == true ) {
+    indicator_score = indicator_score + 10; 
+    console.log("second wave just trending up"); // debug log
+  }
+  else { indicator_score = -1000 ; console.log("second wave failed to score")} 
 
   console.log("\n*** commencing third wave ***"); //debug log
-  // 3rd wave  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 33 | just trending up + 10
+  /// 3rd wave  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 50 | just trending up + 10
   if ( macd_helper.fn_checkTrend(result, startPos3, endPos3) == true && result[endPos3].result.valueMACDHist < 0) { 
     indicator_score = indicator_score + 100 ; 
-    console.log("1d got 100 points for upwards trend + below pre crossover"); // debug log
+    console.log("third wave trend up and below signal line"); // debug log
   }
-  else if ( macd_helper.fn_checkTrend(result, startPos3, endPos3) == true) {
-    indicator_score = indicator_score + 10 ; 
-    console.log("1d got 10 points for upwards trent"); // debug log
-  } else { indicator_score = -1000 ; } 
+  else if ( macd_helper.fn_checkTrend(result, startPos3, endPos3) == true &&  macd_helper.fn_checkCrossover(result, startPos3, endPos3) == true) { 
+    indicator_score = indicator_score + 50; 
+    console.log("third wave trend up and signal line crossed over recently"); // debug log
+  }
+  else if ( macd_helper.fn_checkTrend(result, startPos3, endPos3) == true ) {
+    indicator_score = indicator_score + 10; 
+    console.log("third wave just trending up"); // debug log
+  }
+  else { indicator_score = -1000 ; console.log("third wave failed to score")} 
 
   console.log("indicator score : " + indicator_score);
 
