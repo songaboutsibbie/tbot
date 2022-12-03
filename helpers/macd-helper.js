@@ -16,9 +16,10 @@ function fn_checkTrend(result, startPos, endPos) {
     console.log("is " + result[i].result.valueMACD + " < " + result[i-1].result.valueMACD + "?");
     if (result[i].result.valueMACD < result[i-1].result.valueMACD) {  
       trend = true ; console.log(" Yes.")
-    } else { trend = false ; console.log("trend set to false") ; }
+    } else { trend = false ; }
   }
 
+  console.log("Trend set to : " + trend);
   return trend;
 }
 
