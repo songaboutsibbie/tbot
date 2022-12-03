@@ -39,7 +39,7 @@ client.executeBulkQueries().then(result => {
 
 
 // 1st check : did macd cross the signal line in the withing the last 4 15min interval data points
-    if ( macd_helper.fn_crossover(results) == true ) { indicator_score = 100} else { indicator_score = -1000; }
+    //if ( macd_helper.fn_crossover(result) == true ) { indicator_score = 100} else { indicator_score = -1000; }
    
 
     console.log("indicator score : " + indicator_score);
