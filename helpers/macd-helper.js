@@ -13,10 +13,9 @@ function fn_checkTrend(result, startPos, endPos) {
   trend = false;
 
   for (let i=endPos; i > startPos; i--) {
-    console.log("MACD value " + result[i].result.valueMACD)
+    console.log("is " + result[i].result.valueMACD + " < " + result[i-1].result.valueMACD + "?");
     if (result[i].result.valueMACD < result[i-1].result.valueMACD) {  
-      console.log(result[i].result.valueMACD + " is less than " + result[i-1].result.valueMACD + "so trend = true");
-      trend = true ;
+      trend = true ; console.log(" Yes.")
     } else { trend = false ; console.log("trend set to false") ; }
   }
 
