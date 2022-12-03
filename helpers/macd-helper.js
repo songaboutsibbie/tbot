@@ -1,4 +1,4 @@
-function fn_checkCrossover(result, , endPos) {
+function fn_checkCrossover(result, startPos, endPos) {
   //check whether the MACDHist was negative at start of results and positrive and end of reuslts indicating a crossover has occured
   console.log("checking crossover : is " + result[endPos].result.valueMACDHist + " < " + result[startPos].result.valueMACDHist);
 
