@@ -1,8 +1,8 @@
-function fn_checkCrossover(result) {
+function fn_checkCrossover(result, , endPos) {
   //check whether the MACDHist was negative at start of results and positrive and end of reuslts indicating a crossover has occured
-  console.log("checking crossover : is " + result[2].result.valueMACDHist + " < " + result[0].result.valueMACDHist);
+  console.log("checking crossover : is " + result[endPos].result.valueMACDHist + " < " + result[startPos].result.valueMACDHist);
 
-  if (result[2].result.valueMACDHist < 0 && result[0].result.valueMACDHist > 0) { return true; }
+  if (result[endPos].result.valueMACDHist < 0 && result[startPos].result.valueMACDHist > 0) { return true; }
   else { return false ; }
    
 }
