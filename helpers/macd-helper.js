@@ -1,6 +1,6 @@
 function fn_checkCrossover(result, startPos, endPos) {
   //check whether the MACDHist was negative at start of results and positrive and end of reuslts indicating a crossover has occured
-  console.log("checking crossover : is " + result[endPos].result.valueMACDHist + " < " + result[startPos].result.valueMACDHist);
+  console.log("checking crossover : is " + result[endPos].result.valueMACDHist + " < 0  && " + result[startPos].result.valueMACDHist + " > 0");  // debug
 
   if (result[endPos].result.valueMACDHist < 0 && result[startPos].result.valueMACDHist > 0) { return true; }
   else { return false ; }
@@ -9,10 +9,10 @@ function fn_checkCrossover(result, startPos, endPos) {
 
 // this function confirms that the value of MACD increases over time (array is sorted in reverse chronological order)
 function fn_checkTrend(result, startPos, endPos) {  
-  console.log("endPos : " + endPos + " -- startPos : " + startPos);  // debug comments
+  console.log("checking trend with endPos of " + endPos + " and startPos of " + startPos);  // debug comments
   trend = false;
-  
-  for (let i=endPos; i < startPos+1; i--) {
+
+  for (let i=endPos; i > startPos+1; i--) {
     console.log("MACD value " + result[i].result.valueMACD)
     if (result[i].result.valueMACD < result[i-1].result.valueMACD) {  trend = true } else { trend = false }
   }
