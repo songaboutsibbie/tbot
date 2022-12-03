@@ -14,8 +14,8 @@ function fn_checkTrend(result, startPos, endPos) {
 
   for (let i=endPos; i > startPos; i--) {
     console.log("is " + result[i].result.valueMACD + " < " + result[i-1].result.valueMACD + "?");
-    if (result[i].result.valueMACD < result[i-1].result.valueMACD) {  
-      trend = true ; console.log(" Yes.")
+    if (Number(result[i].result.valueMACD) < Number(result[i-1].result.valueMACD)) {  
+      trend = true ; console.log(" Yes. Continue Checking")
     } else { trend = false ; }
   }
 
