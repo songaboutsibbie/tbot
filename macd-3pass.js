@@ -38,7 +38,7 @@ client.executeBulkQueries().then(result => {
   console.log(result[0].result.valueMACD);
 
   // set start and finish positions of each macd interval type
-  startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos1d = 6; endPos1d = 8;
+  startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos3 = 6; endPos3 = 8;
 
 
   // 1st wave : check if macd cross the signal line in the withing the last 4 15min interval data points
