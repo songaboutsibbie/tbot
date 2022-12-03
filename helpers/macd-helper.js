@@ -1,6 +1,6 @@
 function fn_checkCrossover(result) {
   //check whether the MACDHist was negative at start of results and positrive and end of reuslts indicating a crossover has occured
-  console.log("checking crossover : " + result[2].result.valueMACDHist + " > " + results[0].result.valueMACDHist);
+  console.log("checking crossover : " + result[2].result.valueMACDHist + " > " + result[0].result.valueMACDHist);
 
   if (result[2].result.valueMACDHist < 0 && result[0].result.valueMACDHist > 0) { return true; }
   else { return false ; }
@@ -40,6 +40,7 @@ function fn_rateOfIncrease(result) {
   //console.log("Low Point Position is : " + lowPointPosition);
   //console.log("Total Increase " + totalIncrease);
   // console.log("Average Increase " + averageIncrease);
+  // just some random comments
   return rateOfIncrease;
 }
 
