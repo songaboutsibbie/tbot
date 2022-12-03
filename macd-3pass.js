@@ -36,6 +36,7 @@ client.executeBulkQueries().then(result => {
   console.log("** Argument passed in is: " + crypto);
   console.log(result);
   console.log(result[0].result.valueMACD);
+  console.log(result.length);
 
 
 // 1st check : did macd cross the signal line in the withing the last 4 15min interval data points
