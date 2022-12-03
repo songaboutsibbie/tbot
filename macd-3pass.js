@@ -36,6 +36,7 @@ client.executeBulkQueries().then(result => {
   console.log("** Argument passed in is: " + crypto);
   console.log(result);
   console.log(result[0].result.valueMACD);
+  console.log(typeof result[0].result.valueMACD);
 
   // set start and finish positions of each macd interval type
   startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos3 = 6; endPos3 = 8;
@@ -46,7 +47,7 @@ client.executeBulkQueries().then(result => {
     indicator_score = 100
     console.log("15 min got 100 points"); // debug log
   } 
-  else { indicator_score = -1000; }
+  else { indicator_score = -1000; console.log("first wave failed to score")}
 
   console.log("\n*** commencing second wave ***"); //debug log
   // 2nd wave  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 22 | just trending up + 10
