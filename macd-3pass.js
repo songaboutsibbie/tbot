@@ -34,7 +34,7 @@ client.addBulkQuery("macd", "binance", crypto, "4h", null, 2);
 
 client.executeBulkQueries().then(result => {
   console.log("** Argument passed in is: " + crypto); // debug log
-  console.log(result);  // debug log
+  //console.log(result);  // debug log
 
   // set start and finish positions of each macd interval type
   startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos3 = 6; endPos3 = 8;
@@ -68,7 +68,7 @@ client.executeBulkQueries().then(result => {
   else { indicator_score = -1000 ; console.log("third wave failed to score")} 
 
 
-  // 3rd wave (4h) : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 50 | just trending up + 10 | else if downward trend - exit
+  // 3rd wave (4h) : trending up + below signal crossover = 51 : trending up and recently crossed signal cross over = 31 | just trending up + 11 | else if downward trend - exit
   console.log("\n*** third wave commencing ***"); //debug log
   
   trend = macd_helper.fn_checkTrend(result, startPos3, endPos3);
@@ -96,8 +96,3 @@ client.executeBulkQueries().then(result => {
 }).catch(error => {
     console.log(error);
 });
-
-
-// 15m : cross over = 100 | if below crossover reset to 0 and kick
-// 4 day : trending up = +50 | below the signal cross over = 50 | if neither than reset to 0 and kick out
-// 1 day : trending up = +50 | below the signal cross over = 50 | if neither than reset to 0 and kick out
