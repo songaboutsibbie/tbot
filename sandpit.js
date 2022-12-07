@@ -1,31 +1,27 @@
 //    retrieves a list of symbols on the kucoin exchange and filters for only USDT pairs
 
-const axios = require('axios');
-const sleep = require("./helpers/sleep.js");
-const getSymbol = require("./helpers/fnget-symbols.js");
+const axios = require('axios')
 
-
-
-const processSymbols = async () => {
+const getSymbol = async () => {
     try {
-        console.log("I am inside process symbols function. sleeping...");
-        await sleep.fn_sleep(1000);
-        console.log("sleep over");
+        const resp = await axios.get('https://api.taapi.io/exchange-symbols', {
+          headers: { 'Accept-Encoding': 'application/json'},
+          params: {
+            secret: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbHVlIjoiNjI2MzVhZjk0MjI0NmNlM2IwNGMzNDJkIiwiaWF0IjoxNjcwMjI5MzYwLCJleHAiOjMzMTc0NjkzMzYwfQ.QVROcNEXCK41L_4-9kcq3RB06s3L0mfFq4ir2MdcTlY",
+            exchange: "kucoin",
+          }
+        });
+        let symbolListUSDT = resp.data.filter(a => new RegExp('\/USDT$').test(a));
+        console.log(JSON.stringify(symbolListUSDT, null, 4));
     } catch (err) {
         // Handle Error Here
         console.error(err);
     }
 };
 
-console.log("before getSymbol function call");
-symbolList = getSymbol.fn_getSymbol();
-console.log("after getSymbol function call");
-console.log(JSON.stringify(symbolList, null, 4));
+console.log("before get symbol");
+cryptoList = getSymbol();
 
-console.log("before processSymbols function call");
-processSymbols();
-console.log("after processSymbols function call");
-
-
-
-
+for (let i=0; i > cryptoList.length; i++) {
+    console.log(cryptoList[i]);
+}
