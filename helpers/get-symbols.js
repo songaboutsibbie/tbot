@@ -1,5 +1,8 @@
-//    retrieves a list of symbols on the kucoin exchange and filters for only USDT pairs
+// retrieve symbol list from kucoin exchange, parse it for USDT pairs and write to json file
 
+'use strict';
+
+const fs = require('fs');
 const axios = require('axios')
 
 const getSymbol = async () => {
@@ -13,7 +16,9 @@ const getSymbol = async () => {
         });
         let symbolListUSDT = resp.data.filter(a => new RegExp('\/USDT$').test(a));
         console.log(symbolListUSDT);
-        console.log(JSON.stringify(symbolListUSDT, null, 4));
+        console.log(JSON.stringify(symbolListUSDT));
+        const jsonString = JSON.stringify(symbolListUSDT);
+        fs.writeFileSync('kucoin-symbols.json', jsonString);
     } catch (err) {
         // Handle Error Here
         console.error(err);
@@ -21,5 +26,3 @@ const getSymbol = async () => {
 };
 
 getSymbol();
-
-
