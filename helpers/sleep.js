@@ -1,4 +1,4 @@
-function sleep(ms) {
+function fn_sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
