@@ -21,7 +21,9 @@ const getSymbol = async () => {
 
 console.log("before get symbol");
 cryptoList = getSymbol();
+console.log("after get symbol");
 
 for (let i=0; i > cryptoList.length; i++) {
+    console.log("inside a for loop");
     console.log(cryptoList[i]);
 }
