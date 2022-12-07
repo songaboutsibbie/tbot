@@ -11,8 +11,8 @@ const getSymbol = async () => {
             exchange: "kucoin",
           }
         });
-        let symbolListUSDT = resp.data.filter(a => new RegExp('\/USDT$').test(a));
-        //console.log(JSON.stringify(symbolListUSDT, null, 4));
+        console.log("about to return filtered list");
+        return = resp.data.filter(a => new RegExp('\/USDT$').test(a));
     } catch (err) {
         // Handle Error Here
         console.error(err);
