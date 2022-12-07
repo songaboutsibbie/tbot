@@ -17,7 +17,7 @@ const macd_sigcros = require("./helpers/macd-signalcrossover.js");
 var axios = require('axios');
 axios.get('https://api.taapi.io/macd', {
   params: {
-    secret: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbmdhYm91dHNpYmJpZUBnbWFpbC5jb20iLCJpYXQiOjE2NTA2Nzg1MjEsImV4cCI6Nzk1Nzg3ODUyMX0.kB2EUss32pvD6D3Nv6pg92-ziJ_phjX722Qqx_eHbtU",
+    secret: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbHVlIjoiNjI2MzVhZjk0MjI0NmNlM2IwNGMzNDJkIiwiaWF0IjoxNjcwMjI5MzYwLCJleHAiOjMzMTc0NjkzMzYwfQ.QVROcNEXCK41L_4-9kcq3RB06s3L0mfFq4ir2MdcTlY",
     exchange: "binance",
     symbol: crypto,
     interval: time_period,
@@ -51,8 +51,6 @@ axios.get('https://api.taapi.io/macd', {
       slack.fn_sendmessage(msg);
     }
   }
-
-
 
 
 })
