@@ -12,7 +12,7 @@ const getSymbol = async () => {
           }
         });
         let symbolListUSDT = resp.data.filter(a => new RegExp('\/USDT$').test(a));
-        console.log(JSON.stringify(symbolListUSDT, null, 4));
+        //console.log(JSON.stringify(symbolListUSDT, null, 4));
     } catch (err) {
         // Handle Error Here
         console.error(err);
