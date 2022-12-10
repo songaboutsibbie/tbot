@@ -11,7 +11,7 @@ indicator_score = 0;  // the higher the score the more likely the symbol will in
 const slack = require("./helpers/slack-notification.js");
 
 // import macd helper functions
-const macd_helper = require("./helpers/macd-helper.js");
+const macd = require("./helpers/check-macd.js");
 
 // Require taapi: npm i taapi --save
 const taapi = require("taapi");
@@ -45,7 +45,7 @@ client.executeBulkQueries().then(result => {
   // 1st wave (15m) : if signal line crossed over recently = 100 | else exit
   console.log("\n*** first wave commencing ***"); //debug log
   
-  if ( macd_helper.fn_checkCrossover(result, startPos1, endPos1) == true ) { 
+  if ( macd.fn_checkCrossover(result, startPos1, endPos1) == true ) { 
     indicator_score = 100
     console.log("+100 points - first wave"); // debug log
   } 
@@ -55,8 +55,8 @@ client.executeBulkQueries().then(result => {
   // 2nd wave (1d)  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 50 | just trending up + 20
   console.log("\n*** second wave commencing ***"); //debug log
   
-  trend = macd_helper.fn_checkTrend(result, startPos2, endPos2);
-  crossover = macd_helper.fn_checkCrossover(result, startPos2, endPos2)
+  trend = macd.fn_checkTrend(result, startPos2, endPos2);
+  crossover = macd.fn_checkCrossover(result, startPos2, endPos2)
 
   if ( trend == true && result[endPos2].result.valueMACDHist < 0) { 
     indicator_score = indicator_score + 100 ;  console.log("+100 points - second wave trend up and signal line below macd"); // debug log
@@ -73,8 +73,8 @@ client.executeBulkQueries().then(result => {
   // 3rd wave (4h) : trending up + below signal crossover = 51 : trending up and recently crossed signal cross over = 31 | just trending up + 11 | else if downward trend - exit
   console.log("\n*** third wave commencing ***"); //debug log
   
-  trend = macd_helper.fn_checkTrend(result, startPos3, endPos3);
-  crossover = macd_helper.fn_checkCrossover(result, startPos3, endPos3)
+  trend = macd.fn_checkTrend(result, startPos3, endPos3);
+  crossover = macd.fn_checkCrossover(result, startPos3, endPos3)
 
   if ( trend == true && result[endPos3].result.valueMACDHist < 0) { 
     indicator_score = indicator_score + 51 ; console.log("+100 points - third wave trend up and signal line below macd" ); // debug log
