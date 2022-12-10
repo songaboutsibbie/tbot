@@ -7,6 +7,6 @@ arrayCrypto=("BTC/USDT" "ETH/USDT" "BNB/USDT" "XRP/USDT" "ADA/USDT" "SOL/USDT" "
 for crypto in ${arrayCrypto[@]}; do
         printf "******************************************"
         printf "**** Crypto being passed in is $crypto"
-        node buy-order-macd $crypto
+        node v1-orchestrator $crypto
         sleep 3
 done
