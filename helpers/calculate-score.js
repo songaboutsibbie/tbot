@@ -15,10 +15,22 @@ function fn_macdShortInterval(crossover, increaseRate) {
   return score;
 }
 
-function fn_macdMediumInterval() {
+
+function fn_macdMediumInterval(trend, crossover, startingMACDHistValue) {
   score = 0;
 
+  if ( trend == true ) {
+    score = 25; console.log("50 points : trending up - medium interval"); // debug log
 
+    if ( crossover == true ) { 
+      score = score + 10 ;  console.log("+10 points : crossed over occured recently - medium term interval"); // debug log
+    }
+    if (Number(startingMACDHistValue) < 0) {
+      score = score + 10 ;  console.log("+10 points : macd hasn't crossed over yet - medium term interval"); // debug log
+    }
+
+  }
+  else  { score = 0 ; console.log("-- failed to score on Medium Term Interval")} 
 
   return score;
 }
