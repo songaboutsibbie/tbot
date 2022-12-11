@@ -68,7 +68,7 @@ client.executeBulkQueries().then(result => {
    
     console.log("indicator score : " + score);
 
-    if(score > 110) {
+    if(score > 140) {
       msg = "Buy " + crypto + "  : Score =  " + score 
       + "\nhttps://www.tradingview.com/chart/719ixDGW/?symbol=BINANCE%3A" + crypto.split('/')[0] + "USDT";
       slack.fn_sendmessage(msg);
