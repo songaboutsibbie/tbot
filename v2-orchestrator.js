@@ -49,29 +49,35 @@ client.executeBulkQueries().then(result => {
   score = calculate.fn_macdShortInterval(crossover, increaseRate);
 
   
-  // Check macd against long term interval
-  console.log("\n*** checking macd against Long term interval (1d) ***"); //debug log
+  if(score > 0) {
+    // Check macd against long term interval
+    console.log("\n*** checking macd against Long term interval (1d) ***"); //debug log
+    
+    trend = macd.fn_checkTrend(result, startPos2, endPos2);
+    crossover = macd.fn_checkCrossover(result, startPos2, endPos2)
+    score = score + calculate.fn_macdLongInterval(trend, crossover, result[endPos2].result.valueMACDHist);
+
+    
+
+    // Check macd against medium term interval
+    console.log("\n*** checking macd against medium term interval (4h) ***"); //debug log
+    
+    trend = macd.fn_checkTrend(result, startPos3, endPos3);
+    crossover = macd.fn_checkCrossover(result, startPos3, endPos3)
+    score = score + calculate.fn_macdMediumInterval(trend, crossover, result[endPos2].result.valueMACDHist);
+   
+    console.log("indicator score : " + score);
+
+    if(score > 110) {
+      msg = "Buy " + crypto + "  : Score =  " + score 
+      + "\nhttps://www.tradingview.com/chart/719ixDGW/?symbol=BINANCE%3A" + crypto.split('/')[0] + "USDT";
+      slack.fn_sendmessage(msg);
+    }
+
+  }
   
-  trend = macd.fn_checkTrend(result, startPos2, endPos2);
-  crossover = macd.fn_checkCrossover(result, startPos2, endPos2)
-  score = score + calculate.fn_macdLongInterval(trend, crossover, result[endPos2].result.valueMACDHist);
 
   
-
-  // Check macd against medium term interval
-  console.log("\n*** checking macd against medium term interval (4h) ***"); //debug log
-  
-  trend = macd.fn_checkTrend(result, startPos3, endPos3);
-  crossover = macd.fn_checkCrossover(result, startPos3, endPos3)
-  score = score + calculate.fn_macdMediumInterval(trend, crossover, result[endPos2].result.valueMACDHist);
- 
-  console.log("indicator score : " + score);
-
-  if(score > 110) {
-    msg = "Buy " + crypto + "  : Score =  " + score 
-    + "\nhttps://www.tradingview.com/chart/719ixDGW/?symbol=BINANCE%3A" + crypto.split('/')[0] + "USDT";
-    slack.fn_sendmessage(msg);
-  }  
 
 }).catch(error => {
     console.log(error);
