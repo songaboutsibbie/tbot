@@ -58,27 +58,17 @@ client.executeBulkQueries().then(result => {
 
   
 
-  // 3rd wave (4h) : trending up + below signal crossover = 51 : trending up and recently crossed signal cross over = 31 | just trending up + 11 | else if downward trend - exit
-  console.log("\n*** third wave commencing ***"); //debug log
+  // Check macd against medium term interval
+  console.log("\n*** checking macd against medium term interval (4h) ***"); //debug log
   
   trend = macd.fn_checkTrend(result, startPos3, endPos3);
   crossover = macd.fn_checkCrossover(result, startPos3, endPos3)
+  score = score + calculate.fn_macdMediumInterval(trend, crossover, result[endPos2].result.valueMACDHist);
+ 
+  console.log("indicator score : " + score);
 
-  if ( trend == true && result[endPos3].result.valueMACDHist < 0) { 
-    indicator_score = indicator_score + 51 ; console.log("+100 points - third wave trend up and signal line below macd" ); // debug log
-  }
-  else if ( trend == true &&  crossover == true) { 
-    indicator_score = indicator_score + 31; console.log("+50 points - third wave trend up and signal line crossed over recent"); // debug log
-  }
-  else if ( trend == true ) {
-    indicator_score = indicator_score + 11; console.log("+ 10 points - third wave just trending up"); // debug log
-  }
-  else { indicator_score = -1000 ; console.log("third wave failed to score")} 
-
-  console.log("indicator score : " + indicator_score);
-
-  if(indicator_score > 110) {
-    msg = "Buy " + crypto + "  : Score =  " + indicator_score 
+  if(score > 110) {
+    msg = "Buy " + crypto + "  : Score =  " + score 
     + "\nhttps://www.tradingview.com/chart/719ixDGW/?symbol=BINANCE%3A" + crypto.split('/')[0] + "USDT";
     slack.fn_sendmessage(msg);
   }  
