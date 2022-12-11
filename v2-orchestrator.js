@@ -42,7 +42,6 @@ client.executeBulkQueries().then(result => {
   
   startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos3 = 6; endPos3 = 8; // set start and finish positions of each macd interval type
 
-
   // Check macd against short term interval
   console.log("*** checking macd against short term interval (15m) ***"); //debug log
   crossover = macd.fn_checkCrossover(result, startPos1, endPos1);
@@ -50,26 +49,14 @@ client.executeBulkQueries().then(result => {
   score = calculate.fn_macdShortInterval(crossover, increaseRate);
 
   
-
-
-  // 2nd wave (1d)  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 50 | just trending up + 20
+  // Check macd against long term interval
   console.log("\n*** checking macd against Long term interval (1d) ***"); //debug log
   
   trend = macd.fn_checkTrend(result, startPos2, endPos2);
   crossover = macd.fn_checkCrossover(result, startPos2, endPos2)
   score = score + calculate.fn_macdLongInterval(trend, crossover, result[endPos2].result.valueMACDHist);
 
-  if ( trend == true && result[endPos2].result.valueMACDHist < 0) { 
-    indicator_score = indicator_score + 100 ;  console.log("+100 points - second wave trend up and signal line below macd"); // debug log
-  } 
-  else if ( trend == true && crossover == true) { 
-    indicator_score = indicator_score + 50;  console.log("+50 points - second wave trend up and signal line crossed over recently"); // debug log
-  }
-  else if ( trend == true ) {
-    indicator_score = indicator_score + 10; console.log("+20 points - second wave just trending up"); // debug log
-  }
-  else { indicator_score = -1000 ; console.log("second wave failed to score")} 
-
+  
 
   // 3rd wave (4h) : trending up + below signal crossover = 51 : trending up and recently crossed signal cross over = 31 | just trending up + 11 | else if downward trend - exit
   console.log("\n*** third wave commencing ***"); //debug log
