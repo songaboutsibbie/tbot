@@ -12,6 +12,7 @@ const slack = require("./helpers/slack-notification.js");
 
 // import macd helper functions
 const macd = require("./helpers/check-macd.js");
+const calculate = require("./helpers/calculate-score.js");
 
 // Require taapi: npm i taapi --save
 const taapi = require("taapi");
@@ -38,18 +39,17 @@ client.executeBulkQueries().then(result => {
   console.log("** Argument passed in is: " + crypto); // debug log
   //console.log(result);  // debug log
 
-  // set start and finish positions of each macd interval type
-  startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos3 = 6; endPos3 = 8;
-
-
-  // 1st wave (15m) : if signal line crossed over recently = 100 | else exit
-  console.log("\n*** first wave commencing ***"); //debug log
   
-  if ( macd.fn_checkCrossover(result, startPos1, endPos1) == true ) { 
-    indicator_score = 100
-    console.log("+100 points - first wave"); // debug log
-  } 
-  else { indicator_score = -1000; console.log("first wave failed to score")}
+  startPos1 = 0; endPos1 = 2; startPos2 = 3; endPos2 = 5; startPos3 = 6; endPos3 = 8; // set start and finish positions of each macd interval type
+
+
+  // Check macd against short term interval
+  console.log("\n*** checking macd against short term interval (15m) ***"); //debug log
+  crossover = macd.fn_checkCrossover(result, startPos1, endPos1);
+  increaseRate = macd.fn_checkIncreaseRate(result, startPos1, endPos1);
+  score = calculate.fn_macd15score(crossover, increaseRate);
+
+  
 
 
   // 2nd wave (1d)  : trending up + below signal crossover = 100 : trending up and recently crossed signal cross over = 50 | just trending up + 20
