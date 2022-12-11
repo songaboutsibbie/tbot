@@ -73,6 +73,7 @@ client.executeBulkQueries().then(result => {
       + "\nhttps://www.tradingview.com/chart/719ixDGW/?symbol=BINANCE%3A" + crypto.split('/')[0] + "USDT";
       slack.fn_sendmessage(msg);
     }
+    console.log("\n");
 
   }
   
