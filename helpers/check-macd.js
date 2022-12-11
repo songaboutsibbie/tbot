@@ -22,5 +22,12 @@ function fn_checkTrend(result, startPos, endPos) {
   return trend;
 }
 
+function fn_checkIncreaseRate(result, startPos, endPos) {  
+  totalIncrease = result[startPos].valueMACD - result[endPos].valueMACD;
+  averageIncrease = totalIncrease / (endPos - startPos);
+  rateOfIncrease = (averageIncrease / totalIncrease ) * 100;
 
-module.exports = { fn_checkCrossover, fn_checkTrend } ;
+  return rateOfIncrease;
+}
+
+module.exports = { fn_checkCrossover, fn_checkTrend, fn_checkIncreaseRate } ;
