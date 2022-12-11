@@ -2,6 +2,7 @@
 
 // calculates a score based on macd over 15m interval
 function fn_macd15score(crossover, increaseRate) {
+  score = 0;
   
   if (crossover == true) {
     score = 100;
