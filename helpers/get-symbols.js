@@ -38,7 +38,7 @@ const getSymbol = async () => {
         console.log(merged_symbolList);
 
         const symbol_jsonString = JSON.stringify(merged_symbolList, null, 1);
-        fs.writeFileSync('../data/symbols.json', symbol_jsonString);
+        fs.writeFileSync('./data/symbols.json', symbol_jsonString);
     } catch (err) {
         // Handle Error Here
         console.error(err);
