@@ -6,5 +6,5 @@ for i in ${Arr[@]}; do
         printf $i
         printf "\n"
         node v3-orchestrator.js $i 15m
-        sleep 1
+        sleep 3
 done
