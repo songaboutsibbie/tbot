@@ -29,9 +29,13 @@ axios.get('https://api.taapi.io/rsi', {
   console.log("** Argument passed in is: " + crypto);
   console.log(response.data);
   //rsi.fn_checkOverUnder(response)
-  console.log("result is: " + rsi.fn_checkOverUnder(response.data[0]) );
+  sell_indicator = rsi.fn_checkOverUnder(response.data[0].value);
 
-  
+  if(sell_indicator == "oversold") {
+    console.log(crypto + " is oversold. sending notification");
+      msg = crypto + "  is oversold : " + response.data[0].value;
+      slack.fn_sendmessage(msg);
+    }
 
 
 })
