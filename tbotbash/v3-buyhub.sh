@@ -1,4 +1,4 @@
-cat ./data/symbols.json | tr -d ', ][\t\r"' > ./data/symbol_list.txt
+cat data/raw_symbols.json | tr ',' '\n' > ./data/symbol_list.txt
 
 readarray -t Arr < ./data/symbol_list.txt
 
