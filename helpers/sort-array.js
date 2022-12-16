@@ -11,7 +11,6 @@ function fn_sortArray(arr1, arr2) {
     }
   }
    
-  console.log(arr);
   return arr;  // Return the arr elements
 }
 
