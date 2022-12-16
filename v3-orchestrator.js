@@ -4,7 +4,7 @@
 const myArgs = process.argv.slice(2);
 crypto = myArgs[0];
 time_period = myArgs[1]
-backtracks = 8; // 2 hours using 15 min time period
+backtracks = 4; // 2 hours using 15 min time period
 
 
 // setup slack notifications
@@ -27,15 +27,17 @@ axios.get('https://api.taapi.io/rsi', {
 .then(function (response) {
 
   console.log("** Argument passed in is: " + crypto);
-  console.log(response.data);
-  //rsi.fn_checkOverUnder(response)
-  sell_indicator = rsi.fn_checkOverUnder(response.data[0].value);
 
-  if(sell_indicator == "oversold") {
-    console.log(crypto + " is oversold. sending notification");
-      msg = crypto + "  is oversold : " + response.data[0].value;
-      slack.fn_sendmessage(msg);
-    }
+
+  sell_indicator = rsi.fn_isOversold_Recent(response.data[0].value, response.data[1].value)
+
+  if(sell_indicator == true) {
+    console.log(crypto + " has recently become oversold. sending notification");
+    console.log(response.data);
+
+    msg = crypto + "  has recently become oversold : " + response.data[0].value;
+    slack.fn_sendmessage(msg);
+  }
 
 
 })
