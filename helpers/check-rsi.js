@@ -13,4 +13,4 @@ function fn_isOversold_Recent(rsi_value_now, rsi_value_previous) {
   else { return false; }
 }
 
-module.exports = { fn_isOversold } ;
+module.exports = { fn_isOversold, fn_isOversold_Recent } ;
