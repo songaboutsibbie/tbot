@@ -1,9 +1,10 @@
 #cat data/raw_symbols.json | tr ',' '\n' > ./data/symbol_list.txt
 
-echo "v3-buyhub.sh started">>/tmp/cronlog.log
+ echo `date` "v3-buyhub.sh started">>/tmp/cronlog.log
 
 readarray -d "," -t Arr < ./data/symbolsList.txt
 
+ echo `date` "v3-buyhub.sh symbolList read looping through array">>/tmp/cronlog.log
 for i in ${Arr[@]}; do
         printf $i
         printf "\n"
@@ -11,4 +12,4 @@ for i in ${Arr[@]}; do
         sleep 3
 done
 
-echo "v3-buyhub.sh finished">>/tmp/cronlog.log
+ echo `date` "v3-buyhub.sh finished">>/tmp/cronlog.log
