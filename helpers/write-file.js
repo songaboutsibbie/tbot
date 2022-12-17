@@ -5,6 +5,6 @@ function fn_writeBuyOrder(message) {
   });
 }
 
-module.exports = { fn_writeToFile } ;
+module.exports = { fn_writeBuyOrder } ;
 
 
