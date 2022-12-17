@@ -37,10 +37,7 @@ const getSymbol = async () => {
         console.log("\n**************** sorted_symbolList");
         console.log(merged_symbolList);
 
-        //const symbol_jsonString = JSON.stringify(merged_symbolList, null, 1);
-        //fs.writeFileSync('./data/symbols.json', symbol_jsonString);
-
-        fs.writeFileSync('./data/raw_symbols.json', merged_symbolList);
+        fs.writeFileSync('./data/symbolsList.txt', merged_symbolList);
     } catch (err) {
         // Handle Error Here
         console.error(err);
