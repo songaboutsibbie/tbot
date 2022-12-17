@@ -1,6 +1,8 @@
-cat data/raw_symbols.json | tr ',' '\n' > ./data/symbol_list.txt
+#cat data/raw_symbols.json | tr ',' '\n' > ./data/symbol_list.txt
 
-readarray -t Arr < ./data/symbol_list.txt
+echo "v3-buyhub.sh started">>/tmp/cronlog.log
+
+readarray -d "," -t Arr < ./data/symbolsList.txt
 
 for i in ${Arr[@]}; do
         printf $i
@@ -8,3 +10,5 @@ for i in ${Arr[@]}; do
         node v3-orchestrator.js $i 15m
         sleep 3
 done
+
+echo "v3-buyhub.sh finished">>/tmp/cronlog.log
