@@ -34,7 +34,6 @@ axios.get('https://api.taapi.io/rsi', {
     console.log(crypto + " has recently become oversold. sending notification");
     msg = crypto + "  has recently become oversold : " + response.data[0].value;
     slack.fn_sendmessage(msg);
-    console.log("\nwriting to file");
     writeFile.fn_writeBuyOrder(crypto);
   }
 
