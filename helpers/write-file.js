@@ -1,10 +1,11 @@
-function fn_writeBuyOrder(message) {
+function fn_writeBuyOrder(crypto) {
+  const fs = require('fs');
+  
   console.log("writing to file");
-  fs.appendFile('./data/buyOrder.txt', 'message', function (err) {
+  message = crypto + ",";
+  fs.appendFile('./data/buyOrder.txt', message, function (err) {
   	if (err) throw err;
   });
 }
 
-module.exports = { fn_writeBuyOrder } ;
-
-
+module.exports = { fn_writeBuyOrder } ;  
