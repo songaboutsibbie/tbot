@@ -2,7 +2,7 @@
 
 function fn_isOversold(rsi_value) {
   //checks whether a given crypto is oversold
-  if (rsi_value < 25 ) { return true; } 
+  if (rsi_value < 35 ) { return true; } 
   else { return false; }
 }
 
