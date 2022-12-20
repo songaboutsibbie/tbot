@@ -11,7 +11,7 @@ for i in ${Arr[@]}; do
               crypto_array+="$i "
               bulklimit=$(( $bulklimit + 1 ))
         else
-               node bulk-v3-orchestrator.js $crypto_array
+               node v3-orchestrator-bulk.js $crypto_array
                bulklimit=1   
                crypto_array=() 
                sleep 2       
