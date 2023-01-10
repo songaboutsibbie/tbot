@@ -24,7 +24,7 @@ function fn_findLows(numbers) {
   var LocalLowArray = [];
   console.log("entered find lows")
   for (let i = 1; i < numbers.length; i++) {
-
+      console.log(Number(numbers[i]) + " < " + Number(numbers[i - 1]))
       if (Number(numbers[i]) < Number(numbers[i - 1])) {
         trend = "downward";
         console.log("trend downward")
