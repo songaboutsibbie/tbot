@@ -73,7 +73,7 @@ const getData = async () => {
       console.log("we have a winner");
       // do some shit    
   } 
-  else (console.log("no dice"); )
+  else {console.log("no dice"); }
 
 
 
