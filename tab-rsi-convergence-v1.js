@@ -10,7 +10,7 @@ backtracks = 20; // 2 hours using 15 min time period
 // setup dependencies
 //const slack = require("./helpers/slack-notification.js"); // slack notifications
 const axios = require('axios')
-const trends = require("./helpers/check-trends.js");  // check rsi indicator
+const rsi = require("./helpers/check-rsi.js");  // check rsi indicator
 
 
 
@@ -44,11 +44,11 @@ const getData = async () => {
   console.log(rsiResponse.data);
   console.log(priceResponse.data);  
 
-  priceTrend =  trends.fn_detectTrend(priceResponse.data)
+  priceTrend =  rsi.fn_detectTrend(priceResponse.data)
   console.log("price trend is : " + priceTrend)
-  rsiTrend =  trends.fn_detectTrend(rsiResponse.data)
+  rsiTrend =  rsi.fn_detectTrend(rsiResponse.data)
   console.log("rsi trend is : " + rsiTrend)
-  
+
 
   } catch (err) {
       // Handle Error Here
