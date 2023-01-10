@@ -27,6 +27,7 @@ function fn_findLows(numbers) {
 
       if (Number(numbers[i]) < Number(numbers[i - 1])) {
         trend = "downward";
+        console.log("trend downward")
       }
 
       if (( Number(numbers[i]) > Number(numbers[i - 1]) ) && trend == "downward") {
