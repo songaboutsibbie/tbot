@@ -42,7 +42,8 @@ const getData = async () => {
       });
 
   priceResponse.data.reverse(); 
-  console.log("price data\n" + priceResponse.data);  console.log("rsi data\n" + rsiResponse.data);
+  console.log(priceResponse.data);  
+  console.log(rsiResponse.data);
 
 
   // 1. check that price is trending down
@@ -71,7 +72,8 @@ const getData = async () => {
   if ( priceTrend == "downward" && rsiTrend == "downward" && LowerLowCount > 2 && HigherLowsCount > 2) {
       console.log("we have a winner");
       // do some shit    
-  }
+  } 
+  else (console.log("no dice"); )
 
 
 
