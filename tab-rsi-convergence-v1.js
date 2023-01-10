@@ -41,10 +41,8 @@ const getData = async () => {
         }
       });
 
-  priceResponse.data.reverse();
-
-  console.log(priceResponse.data);  
-  console.log(rsiResponse.data);
+  priceResponse.data.reverse(); 
+  console.log("price data\n" + priceResponse.data);  console.log("rsi data\n" + rsiResponse.data);
 
 
   // 1. check that price is trending down
@@ -54,7 +52,6 @@ const getData = async () => {
   // 2. check that rsi is trending up
   rsiTrend =  rsi.fn_detectTrend(rsiResponse.data)
   console.log("rsi trend is : " + rsiTrend)
-
 
   // 3. price is forming lower lows
   priceLowArray = rsi.fn_findLows(priceResponse.data)
@@ -70,6 +67,12 @@ const getData = async () => {
 
   HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
   console.log("RSI Lower Lows Count is : " + HigherLowsCount)
+
+  if ( priceTrend == "downward" && rsiTrend == "downward" && LowerLowCount > 2 && HigherLowsCount > 2) {
+      console.log("we have a winner");
+      // do some shit    
+  }
+
 
 
   } catch (err) {
