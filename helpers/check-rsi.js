@@ -29,7 +29,7 @@ function fn_findLows(numbers) {
         trend = "downward";
       }
 
-      if ((Number(numbers[i]) > Number(numbers[i - 1]) && trend == "downward") {
+      if (( Number(numbers[i]) > Number(numbers[i - 1]) ) && trend == "downward") {
           trend = "upwards"
           LocalLowArray.push(numbers[i - 1]);
           console.log(numbers[i - 1] + " added to lower lows");
