@@ -25,11 +25,11 @@ function fn_findLows(numbers) {
 
   for (let i = 1; i < numbers.length; i++) {
 
-      if (numbers[i] < numbers[i - 1]) {
+      if (Number(numbers[i]) < Number(numbers[i - 1])) {
         trend = "downward";
       }
 
-      if ((numbers[i] > numbers[i - 1]) && trend == "downward") {
+      if ((Number(numbers[i]) > Number(numbers[i - 1]) && trend == "downward") {
           trend = "upwards"
           LocalLowArray.push(numbers[i - 1]);
           console.log(numbers[i - 1] + " added to lower lows");
