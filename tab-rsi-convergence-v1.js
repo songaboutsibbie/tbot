@@ -44,9 +44,9 @@ const getData = async () => {
   console.log(rsiResponse.data);
   console.log(priceResponse.data);  
 
-  priceTrend =  rsi.fn_detectTrend(priceResponse.data)
+  priceTrend =  rsi.fn_detectTrend(priceResponse.data.reverse())
   console.log("price trend is : " + priceTrend)
-  rsiTrend =  rsi.fn_detectTrend(rsiResponse.data)
+  rsiTrend =  rsi.fn_detectTrend(rsiResponse.data.reverse())
   console.log("rsi trend is : " + rsiTrend)
 
 
