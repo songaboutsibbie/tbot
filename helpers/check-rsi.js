@@ -42,13 +42,13 @@ function fn_detectLowerLows(numbers) {
       return null;
   }
 
-  let LowestLow = numbers[0].value;
+  let LowestLow = numbers[0];
   let LowestLowCount = 0;
 
   for (let i = 1; i < numbers.length; i++) {
     console.log("lowest low is : " + LowestLow)
-    if (numbers[i].value < LowestLow) {
-      LowestLow = numbers[i].value;
+    if (numbers[i] < LowestLow) {
+      LowestLow = numbers[i];
       LowestLowCount++;
     } 
   }
@@ -65,6 +65,7 @@ function fn_detectHigherLows(numbers) {
   let HigherLowCount = 0;
 
   for (let i = 1; i < numbers.length; i++) {
+    console.log("highest low is : " + HighestLow)
     if (numbers[i] > HighestLow) {
       HighestLow = numbers[i];
       HigherLowCount++;
