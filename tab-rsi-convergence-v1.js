@@ -41,33 +41,34 @@ const getData = async () => {
         }
       });
 
+  console.log("** Argument passed in is: " + crypto);
   priceResponse.data.reverse(); 
-  console.log(priceResponse.data);  
-  console.log(rsiResponse.data);
+  //console.log(priceResponse.data);  
+  //console.log(rsiResponse.data);
 
 
   // 1. check that price is trending down
   priceTrend =  rsi.fn_detectTrend(priceResponse.data)
-  console.log("price trend is : " + priceTrend)
+  //console.log("price trend is : " + priceTrend)
 
   // 2. check that rsi is trending up
   rsiTrend =  rsi.fn_detectTrend(rsiResponse.data)
-  console.log("rsi trend is : " + rsiTrend)
+  //console.log("rsi trend is : " + rsiTrend)
 
   // 3. price is forming lower lows
   priceLowArray = rsi.fn_findLows(priceResponse.data)
-  console.log("Price Lows are : " + priceLowArray);
+  //console.log("Price Lows are : " + priceLowArray);
 
   LowerLowCount = rsi.fn_detectLowerLows(priceLowArray);
-  console.log("Price Lower Lows Count is : " + LowerLowCount)
+  //console.log("Price Lower Lows Count is : " + LowerLowCount)
 
 
   // 4. price is forming lower lows
   rsiLowArray = rsi.fn_findLows(rsiResponse.data)
-  console.log("RSI Lows are : " + rsiLowArray);
+  //console.log("RSI Lows are : " + rsiLowArray);
 
   HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
-  console.log("RSI Lower Lows Count is : " + HigherLowsCount)
+  //console.log("RSI Lower Lows Count is : " + HigherLowsCount)
 
   if ( priceTrend == "downward" && rsiTrend == "downward" && LowerLowCount > 2 && HigherLowsCount > 2) {
       console.log("we have a winner");
