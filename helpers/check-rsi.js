@@ -14,7 +14,7 @@ function fn_isOversold_Recent(rsi_value_now, rsi_value_previous) {
 }
 
 function fn_detectTrend(data_array) {
-  if(data_array.value[0] < data_array.value[data_array.length]) { return "downward"; }
+  if(data_array.value[0] < data_array.value[1]) { return "downward"; }
   else { return "upward";}
 
 }
