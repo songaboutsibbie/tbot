@@ -1,4 +1,8 @@
-// provide a buy recommendation using macd algo
+// conditions that need to be met for rsi convergence are
+// 1. price is trending down
+// 2. rsi is trending up
+// 3. price forms lower lows
+// 4. rsi is forming higher lows
 
 // set crypto (from args) & hard code time period and backtrack perios
 const myArgs = process.argv.slice(2);
@@ -8,15 +12,11 @@ backtracks = 20; // 2 hours using 15 min time period
 
 
 // setup dependencies
-//const slack = require("./helpers/slack-notification.js"); // slack notifications
+const slack = require("./helpers/slack-notification.js"); // slack notifications
 const axios = require('axios')
 const rsi = require("./helpers/check-rsi.js");  // check rsi indicator
 
-
-
-//'use strict';
-
-
+// retrieve price and rsi data from exchange
 const getData = async () => {
   try {
       const rsiResponse = await axios.get('https://api.taapi.io/rsi', {
@@ -41,13 +41,30 @@ const getData = async () => {
         }
       });
 
-  console.log(rsiResponse.data);
-  console.log(priceResponse.data);  
+  console.log(rsiResponse.data.reverse());
+  console.log(priceResponse.data.reverse());  
 
+  // 1. check that price is trending down
   priceTrend =  rsi.fn_detectTrend(priceResponse.data.reverse())
   console.log("price trend is : " + priceTrend)
+
+  // 2. check that rsi is trending up
   rsiTrend =  rsi.fn_detectTrend(rsiResponse.data.reverse())
   console.log("rsi trend is : " + rsiTrend)
+
+  // 3. price is forming lower lows
+  priceLowArray = fn_findLows(priceResponse.data.reverse())
+  console.log("Price Lows are : ");
+
+  LowerLowsCount = fn_detectLowerLows(priceLowArray);
+  console.log("Lower Lows Count is : " + LowerLowsCount)
+
+  // 4. price is forming lower lows
+  rsiLowArray = fn_findLows(rsiResponse.data.reverse())
+  console.log("Price Lows are : ");
+
+  HigherLowsCount = fn_detectHigherLows(rsiLowArray);
+  console.log("Lower Lows Count is : " + HigherLowsCount)
 
 
   } catch (err) {
