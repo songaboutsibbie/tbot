@@ -31,7 +31,6 @@ function fn_findLows(numbers) {
       if (numbers[i].value > numbers[i - 1].value  && trend == "downward") {
           trend = "upwards"
           LocalLowArray.push(numbers[i - 1].value);
-          console.log(numbers[i - 1].value + " added to lower lows");
       }
   }
   return LocalLowArray;
@@ -47,6 +46,7 @@ function fn_detectLowerLows(numbers) {
   let LowestLowCount = 0;
 
   for (let i = 1; i < numbers.length; i++) {
+    console.log("lowest low is : " + LowestLow)
     if (numbers[i].value < LowestLow) {
       LowestLow = numbers[i].value;
       LowestLowCount++;
