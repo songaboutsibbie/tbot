@@ -41,12 +41,20 @@ const getData = async () => {
         }
       });
 
-  priceResponse.data
+  priceResponse.data.reverse();
+
   console.log(priceResponse.data);  
+  console.log(rsiResponse.data);
+
 
   // 1. check that price is trending down
   priceTrend =  rsi.fn_detectTrend(priceResponse.data)
   console.log("price trend is : " + priceTrend)
+
+  // 2. check that rsi is trending up
+  rsiTrend =  rsi.fn_detectTrend(rsiResponse.data)
+  console.log("rsi trend is : " + rsiTrend)
+
 
   // 3. price is forming lower lows
   priceLowArray = rsi.fn_findLows(priceResponse.data)
@@ -55,11 +63,6 @@ const getData = async () => {
   LowerLowCount = rsi.fn_detectLowerLows(priceLowArray);
   console.log("Price Lower Lows Count is : " + LowerLowCount)
 
-  console.log(rsiResponse.data.reverse());
-
-  // 2. check that rsi is trending up
-  rsiTrend =  rsi.fn_detectTrend(rsiResponse.data)
-  console.log("rsi trend is : " + rsiTrend)
 
   // 4. price is forming lower lows
   rsiLowArray = rsi.fn_findLows(rsiResponse.data)
