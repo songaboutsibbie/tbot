@@ -70,7 +70,7 @@ function fn_detectHigherLows(numbers) {
       HigherLowCount++;
     } 
   }
-  return LowestLowCount;
+  return HigherLowCount;
 }
 
 module.exports = { fn_isOversold, fn_isOversold_Recent, fn_detectTrend, fn_findLows, fn_detectLowerLows, fn_detectHigherLows } ;
