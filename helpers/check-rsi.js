@@ -44,7 +44,7 @@ function fn_detectLowerLows(numbers) {
   }
 
   let LowestLow = numbers[0].value;
-  let LowerLowCount = 0;
+  let LowestLowCount = 0;
 
   for (let i = 1; i < numbers.length; i++) {
     if (numbers[i].value < LowestLow) {
