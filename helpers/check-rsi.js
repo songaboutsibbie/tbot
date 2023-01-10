@@ -24,18 +24,14 @@ function fn_findLows(numbers) {
   var LocalLowArray = [];
   console.log("entered find lows")
   for (let i = 1; i < numbers.length; i++) {
-     
-      console.log(numbers[i] + " < " + numbers[i - 1])
-
-      if (numbers[i] < numbers[i - 1]) {
+      if (numbers[i].value < numbers[i - 1].value) {
         trend = "downward";
-        console.log("trend downward")
       }
 
-      if (numbers[i] > numbers[i - 1]  && trend == "downward") {
+      if (numbers[i].value > numbers[i - 1].value  && trend == "downward") {
           trend = "upwards"
-          LocalLowArray.push(numbers[i - 1]);
-          console.log(numbers[i - 1] + " added to lower lows");
+          LocalLowArray.push(numbers[i - 1].value);
+          console.log(numbers[i - 1].value + " added to lower lows");
       }
   }
   return LocalLowArray;
@@ -47,12 +43,12 @@ function fn_detectLowerLows(numbers) {
       return null;
   }
 
-  let LowestLow = numbers[0];
+  let LowestLow = numbers[0].value;
   let LowerLowCount = 0;
 
   for (let i = 1; i < numbers.length; i++) {
-    if (numbers[i] < LowestLow) {
-      LowestLow = numbers[i];
+    if (numbers[i].value < LowestLow) {
+      LowestLow = numbers[i].value;
       LowestLowCount++;
     } 
   }
