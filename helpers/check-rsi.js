@@ -14,54 +14,64 @@ function fn_isOversold_Recent(rsi_value_now, rsi_value_previous) {
 }
 
 function fn_detectTrend(data_array) {
-  if (Number(data_array[0].value) < Number(data_array[data_array.length - 1].value) ) { return "downward"; }
+  if (Number(data_array[0].value) > Number(data_array[data_array.length - 1].value) ) { return "downward"; }
   else { return "upward";}
 }
 
-function fn_findLows(number) {
-    // find lows
-    let trend = null;
-    var LocalLowArray = [];
+function fn_findLows(numbers) {
+  // find lows
+  let trend = null;
+  var LocalLowArray = [];
 
-    for (let i = 1; i < number.length; i++) {
+  for (let i = 1; i < numbers.length; i++) {
 
-        if (number[i] < number[i - 1]) {
-          trend = "downward";
-        }
+      if (numbers[i] < numbers[i - 1]) {
+        trend = "downward";
+      }
 
-        if ((number[i] > number[i - 1]) && trend == "downward") {
-            trend = "upwards"
-            LocalLowArray.push(number[i - 1]);
-            console.log(number[i - 1] + " added to lower lows");
-        }
-    }
-    return LocalLowArray;
+      if ((numbers[i] > numbers[i - 1]) && trend == "downward") {
+          trend = "upwards"
+          LocalLowArray.push(numbers[i - 1]);
+          console.log(numbers[i - 1] + " added to lower lows");
+      }
+  }
+  return LocalLowArray;
 }
 
 function fn_detectLowerLows(numbers) {
-    //  check if LowerLow is a downward trend or upward trend
-    if (numbers.length < 2) {
-        return null;
-    }
-
-    let uptrend = 0;
-    let downtrend = 0;
-
-
-    for (let i = 1; i < numbers.length; i++) {
-        if (numbers[i] > numbers[i - 1]) {
-            uptrend++;
-
-        } else if (numbers[i] < numbers[i - 1]) {
-            downtrend++
-        }
+  //  check if LowerLow is a downward trend or upward trend
+  if (numbers.length < 2) {
+      return null;
   }
 
-  uptrend_percent = (uptrend / (uptrend + downtrend) ) * 100
-  downtrend_percent = (downtrend / (uptrend + downtrend) ) * 100
-  console.log("uptrend = " + uptrend_percent);
-  console.log("downtrend = " + downtrend_percent);
+  let LowestLow = numbers[0];
+  let LowerLowCount = 0;
 
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < LowestLow) {
+      LowestLow = numbers[i];
+      LowestLowCount++;
+    } 
+  }
+  return LowestLowCount;
 }
 
-module.exports = { fn_isOversold, fn_isOversold_Recent, fn_detectTrend, fn_findLows, fn_detectLowerLows } ;
+function fn_detectHigherLows(numbers) {
+  //  check if LowerLow is a downward trend or upward trend
+  if (numbers.length < 2) {
+      return null;
+  }
+
+  let HighestLow = numbers[0];
+  let HigherLowCount = 0;
+
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > HighestLow) {
+      HighestLow = numbers[i];
+      HigherLowCount++;
+    } 
+  }
+  return LowestLowCount;
+}
+
+module.exports = { fn_isOversold, fn_isOversold_Recent, fn_detectTrend, fn_findLows, fn_detectLowerLows, fn_detectHigherLows } ;
