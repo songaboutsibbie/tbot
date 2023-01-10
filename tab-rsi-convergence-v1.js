@@ -53,17 +53,17 @@ const getData = async () => {
   console.log("rsi trend is : " + rsiTrend)
 
   // 3. price is forming lower lows
-  priceLowArray = fn_findLows(priceResponse.data.reverse())
+  priceLowArray = rsi.fn_findLows(priceResponse.data.reverse())
   console.log("Price Lows are : ");
 
-  LowerLowsCount = fn_detectLowerLows(priceLowArray);
+  LowerLowsCount = rsi.fn_detectLowerLows(priceLowArray);
   console.log("Lower Lows Count is : " + LowerLowsCount)
 
   // 4. price is forming lower lows
-  rsiLowArray = fn_findLows(rsiResponse.data.reverse())
+  rsiLowArray = rsi.fn_findLows(rsiResponse.data.reverse())
   console.log("Price Lows are : ");
 
-  HigherLowsCount = fn_detectHigherLows(rsiLowArray);
+  HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
   console.log("Lower Lows Count is : " + HigherLowsCount)
 
 
