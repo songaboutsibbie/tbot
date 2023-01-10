@@ -71,9 +71,8 @@ const getData = async () => {
   //console.log("RSI Lower Lows Count is : " + HigherLowsCount)
 
   if ( priceTrend == "downward" && rsiTrend == "downward" && LowerLowCount > 2 && HigherLowsCount > 2) {
-    console.log("we have a winner");
-    // do some shit
-    msg = "Price and RSI convergence detected for : +  "  crypto;
+    console.log("we have a winner");    
+    msg = "Price and RSI convergence detected for :  " + crypto;
     slack.fn_sendmessage(msg);    
   } 
   else {console.log("no dice"); }
