@@ -1,7 +1,9 @@
 // installs
-sudo apt install npm
 sudo apt-get update
 sudo apt-get install nodejs
+sudo apt install npm
+sudo apt install git
+npm i taapi --save
 
 // check versions
 npm -v
@@ -9,3 +11,46 @@ node -v
 
 
 // github
+git clone https://github.com/songaboutsibbie/tbot.git
+
+
+commit
+git config --global user.email songaboutsibbie@gmail.com
+git config --global user.name "songaboutsibbie"
+git commit -m "added helpers" bsh.js
+
+pull
+git pull origin main
+
+reset locatl changers
+git reset --hard
+
+
+// manual files
+copy data/buylist.txt
+copy helpers/slack-notifications.js
+
+slack
+https://www.howtogeek.com/devops/how-to-send-a-message-to-slack-from-a-bash-script/
+app : ta_notication
+
+webhookurl: https://hooks.slack.com/services/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
+
+usage: 
+
+curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
+
+
+
+cron job
+https://ostechnix.com/a-beginners-guide-to-cron-jobs/
+crontab -e
+
+#30 0,2,4,6,8,10,12,14,23 * * * /home/homestar/tbot/tbotbash/sellhub.sh
+35 0,2,4,6,8,10,12,14,23 * * * /home/ubuntu/tbot/tbotbash/buyhub.sh
+
+
+run halfpast every hour except 3PM - 11PM CEST (11PM - 7AM AEST)
+
+AEST 11PM - 7AM
+CEST 15 - 23
