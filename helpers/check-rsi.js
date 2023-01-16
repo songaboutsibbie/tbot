@@ -79,4 +79,4 @@ function fn_detectHigherLows(numbers) {
   return HigherLowCount;
 }
 
-module.exports = { fn_isOversold, fn_isOversold_Recent, fn_detectTrend, fn_findLows, fn_detectLowerLows, fn_detectHigherLows } ;
+module.exports = { fn_isOversold, fn_isOversold_Recent, fn_isOverbought_Recent, fn_detectTrend, fn_findLows, fn_detectLowerLows, fn_detectHigherLows } ;
