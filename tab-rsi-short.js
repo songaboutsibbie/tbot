@@ -28,7 +28,7 @@ axios.get('https://api.taapi.io/rsi', {
   console.log("** Argument passed in is: " + crypto);
   console.log(response.data);
 
-  buy_indicator = rsi.fn_isOverbought_Recent(response.data[0].value, response.data[2].value)
+  buy_indicator = rsi.fn_isOverbought_Recent(response.data[0].value, response.data[2].value);
 
   if(buy_indicator == true) {
     console.log(crypto + " has recently become overbought. sending notification");
