@@ -13,6 +13,13 @@ function fn_isOversold_Recent(rsi_value_now, rsi_value_previous) {
   else { return false; }
 }
 
+function fn_isOverbought_Recent(rsi_value_now, rsi_value_previous) {
+  //checks whether a given crypto has become oversold in the last interval
+  
+  if(rsi_value_now > 80 && rsi_value_previous < 80) { return true; } 
+  else { return false; }
+}
+
 function fn_detectTrend(data_array) {
   if (Number(data_array[0].value) > Number(data_array[data_array.length - 1].value) ) { return "downward"; }
   else { return "upward";}
