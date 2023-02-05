@@ -69,13 +69,15 @@ const getData = async () => {
   HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
   //console.log("RSI Lower Lows Count is : " + HigherLowsCount)
 
+  // if score > 50 than send a notification
+  score = 0;
   if ( priceTrend == "downward"  && rsiTrend == "upward" ) { score = 50 ; }
   if ( LowerLowCount > 2 || HigherLowsCount > 2) { score = score + 25 ; }
   if ( LowerLowCount > 2 && HigherLowsCount > 2) { score = score + 25 ; }
 
   if ( score > 49 ) {
     console.log("we have a winner");    
-    msg = "Price and RSI convergence detected for :  " + crypto;
+    msg = "Price and RSI convergence detected for :  " + crypto + ".  with a score of " + score;
     slack.fn_sendmessage(msg);    
   } 
   else {console.log("no dice"); }
