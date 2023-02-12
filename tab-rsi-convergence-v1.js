@@ -1,8 +1,21 @@
-// conditions that need to be met for rsi convergence are
-// 1. price is trending down
-// 2. rsi is trending up
-// 3. price forms lower lows
-// 4. rsi is forming higher lows
+/* checks price and rsi diversion and determines whether to take a short or long position
+
+recommended time period is 1hour or great.  will run this in 1hour and 1day configurations
+
+LONG position conditions (BULLISH DIVERSION)
+1. Downward trend price
+2. At least 2 lower lows exist on price
+3. At least 2 higher lows exist on rsi
+4. Have entered oversold range (less than 30)
+
+SHORT position conditions (BEARISH DIVERSION)
+1. Upward trend price
+2. At least 2 higher highs on price
+3. At least 2 lower highs on rsi
+4. Have entered oversold range (greater than 70)
+
+*/
+
 
 // set crypto (from args) & hard code time period and backtrack perios
 const myArgs = process.argv.slice(2);
@@ -43,45 +56,35 @@ const getData = async () => {
 
   console.log("** Argument passed in is: " + crypto);
   priceResponse.data.reverse(); 
-  //console.log(priceResponse.data);  
-  //console.log(rsiResponse.data);
+  rsiResponse.data.reverse();
 
+  /* check price trend.  
+  If downward then check for bullish divergence / long position.  
+  If trned upwards then check for bearish divergence / short position
+  */
 
-  // 1. check that price is trending down
   priceTrend =  rsi.fn_detectTrend(priceResponse.data)
-  //console.log("price trend is : " + priceTrend)
 
-  // 2. check that rsi is trending up
-  rsiTrend =  rsi.fn_detectTrend(rsiResponse.data)
-  //console.log("rsi trend is : " + rsiTrend)
+  if (priceTrend == "downward" ) {
+    // retieve an array of price lows and determine how many of them are lower lows
+    priceLowArray = rsi.fn_findLows(priceResponse.data)
+    LowerLowCount = rsi.fn_detectLowerLows(priceLowArray);
 
-  // 3. price is forming lower lows
-  priceLowArray = rsi.fn_findLows(priceResponse.data)
-  //console.log("Price Lows are : " + priceLowArray);
+    //retrieve an arrayh of rsi lows and determine how many of them are higher lows
+    rsiLowArray = rsi.fn_findLows(rsiResponse.data)
+    HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
 
-  LowerLowCount = rsi.fn_detectLowerLows(priceLowArray);
-  //console.log("Price Lower Lows Count is : " + LowerLowCount)
+    if ( LowerLowCount > 2 && HigherLowsCount > 2) { 
+      msg = "BULLISH CONVERGENCE DETECTED : " + crypto;
+    }
 
-  // 4. rsi is forming higher lows
-  rsiLowArray = rsi.fn_findLows(rsiResponse.data)
-  //console.log("RSI Lows are : " + rsiLowArray);
+    if (rsiResponse.data[backtracks - 1] > 40) {
+      msg = msg + "\n and its moved out of the oversold range.  Take long position now"
+    }
 
-  HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
-  //console.log("RSI Lower Lows Count is : " + HigherLowsCount)
-
-  // if score > 50 than send a notification
-  score = 0;
-  if ( priceTrend == "downward"  && rsiTrend == "upward" ) { score = 50 ; }
-  if ( LowerLowCount > 2 || HigherLowsCount > 2) { score = score + 25 ; }
-  if ( LowerLowCount > 2 && HigherLowsCount > 2) { score = score + 25 ; }
-
-  if ( score > 49 ) {
-    console.log("we have a winner");    
-    msg = "Price and RSI convergence detected for :  " + crypto + ".  with a score of " + score;
-    slack.fn_sendmessage(msg);    
-  } 
-  else {console.log("no dice"); }
-
+  } else if (priceTrend == "upward") {
+    // still to be built
+  }
 
 
   } catch (err) {
