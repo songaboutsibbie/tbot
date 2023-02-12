@@ -74,7 +74,7 @@ const getData = async () => {
     rsiLowArray = rsi.fn_findLows(rsiResponse.data); console.log("rsi low array : " + rsiLowArray);
     HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
 
-    if ( LowerLowCount > 2 && HigherLowsCount > 2) { 
+    if ( LowerLowCount > 1 && HigherLowsCount > 1) { 
       msg = "BULLISH CONVERGENCE DETECTED : " + crypto; console.log("BULLISH CONVERGENCE DETECTED") ;
     }
 
