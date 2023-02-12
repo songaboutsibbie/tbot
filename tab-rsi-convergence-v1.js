@@ -67,18 +67,18 @@ const getData = async () => {
 
   if (priceTrend == "downward" ) {
     // retieve an array of price lows and determine how many of them are lower lows
-    priceLowArray = rsi.fn_findLows(priceResponse.data)
+    priceLowArray = rsi.fn_findLows(priceResponse.data); console.log("price low array : " + priceLowArray);
     LowerLowCount = rsi.fn_detectLowerLows(priceLowArray);
 
     //retrieve an arrayh of rsi lows and determine how many of them are higher lows
-    rsiLowArray = rsi.fn_findLows(rsiResponse.data)
+    rsiLowArray = rsi.fn_findLows(rsiResponse.data); console.log("rsi low array : " + rsiLowArray);
     HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
 
     if ( LowerLowCount > 2 && HigherLowsCount > 2) { 
       msg = "BULLISH CONVERGENCE DETECTED : " + crypto; console.log("BULLISH CONVERGENCE DETECTED") ;
     }
 
-    if (rsiResponse.data[backtracks - 1] > 40) {
+    if (rsiResponse.data[backtracks - 1] > 29) {
       msg = msg + "\n and its moved out of the oversold range.  Take long position now"
     }
 
