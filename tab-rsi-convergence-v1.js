@@ -55,7 +55,6 @@ const getData = async () => {
       });
 
   console.log("** Argument passed in is: " + crypto);
-  console.log(priceResponse.data);
   priceResponse.data.reverse(); 
   rsiResponse.data.reverse();
 
@@ -68,7 +67,8 @@ const getData = async () => {
 
   if (priceTrend == "downward" ) {
     // retieve an array of price data and determine how many of them are lower lows
-    console.log("price data is : " + priceResponse.data);  console.log("rsi data is : " + rsiResponse.data);  
+    console.log(priceResponse.data);
+    console.log(rsiResponse.data);
     priceLowArray = rsi.fn_findLows(priceResponse.data); console.log("price low array : " + priceLowArray);
     LowerLowCount = rsi.fn_detectLowerLows(priceLowArray);
 
@@ -86,7 +86,8 @@ const getData = async () => {
 
   } else if (priceTrend == "upward") {
     // retieve an array of price data and determine how many of them are higher hights
-    console.log("price data is : " + priceResponse.data);  console.log("rsi data is : " + rsiResponse.data);  
+    console.log(priceResponse.data);
+    console.log(rsiResponse.data);
     priceHighArray = rsi.fn_findHighs(priceResponse.data); console.log("price low array : " + priceLowArray);
 
 
