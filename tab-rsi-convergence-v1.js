@@ -93,6 +93,8 @@ const getData = async () => {
 
   }
 
+  console.log(msg);
+
 
   } catch (err) {
       // Handle Error Here
