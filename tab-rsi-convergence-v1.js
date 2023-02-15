@@ -107,8 +107,11 @@ const getData = async () => {
     }
 
   }
-
-  console.log(msg);
+  if(msg){ 
+    slack.fn_sendmessage(msg);
+    console.log(msg);
+  }
+  if(!msg) { console.log("no luck");}
 
 
   } catch (err) {
