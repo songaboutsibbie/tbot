@@ -57,6 +57,7 @@ const getData = async () => {
   console.log("** Argument passed in is: " + crypto);
   priceResponse.data.reverse(); 
   rsiResponse.data.reverse();
+  msg = "";
 
   /* check price trend.  
   If downward then check for bullish divergence / long position.  
@@ -74,6 +75,8 @@ const getData = async () => {
     //retrieve an array of rsi data and determine how many of them are higher lows
     rsiLowArray = rsi.fn_findLows(rsiResponse.data); console.log("rsi low array : " + rsiLowArray);
     HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
+
+    console.log("Price Lower Low Count: " + LowerLowCount + "  RSI Higher Low Count: " + HigherLowsCount)
 
     if ( LowerLowCount > 1 && HigherLowsCount > 1) { 
       msg = "BULLISH CONVERGENCE DETECTED : " + crypto; console.log("BULLISH CONVERGENCE DETECTED") ;
