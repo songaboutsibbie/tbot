@@ -79,4 +79,22 @@ function fn_detectHigherLows(numbers) {
   return HigherLowCount;
 }
 
-module.exports = { fn_isOversold, fn_isOversold_Recent, fn_isOverbought_Recent, fn_detectTrend, fn_findLows, fn_detectLowerLows, fn_detectHigherLows } ;
+function fn_findHighs(numbers) {
+  // find lows
+  let trend = null;
+  var LocalLowArray = [];
+  
+  for (let i = 1; i < numbers.length; i++) {
+      if (numbers[i].value > numbers[i - 1].value) {
+        trend = "upward";
+      }
+
+      if (numbers[i].value < numbers[i - 1].value  && trend == "upward") {
+          trend = "downward"
+          LocalLowArray.push(numbers[i - 1].value);
+      }
+  }
+  return LocalLowArray;
+}
+
+module.exports = { fn_isOversold, fn_isOversold_Recent, fn_isOverbought_Recent, fn_detectTrend, fn_findLows, fn_detectLowerLows, fn_detectHigherLows, fn_findHighs } ;
