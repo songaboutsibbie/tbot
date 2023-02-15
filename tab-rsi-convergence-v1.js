@@ -67,8 +67,7 @@ const getData = async () => {
 
   if (priceTrend == "downward" ) {
     // retieve an array of price data and determine how many of them are lower lows
-    console.log(priceResponse.data);
-    console.log(rsiResponse.data);
+    console.log("downward trend"); console.log(priceResponse.data);    console.log(rsiResponse.data);
     priceLowArray = rsi.fn_findLows(priceResponse.data); console.log("price low array : " + priceLowArray);
     LowerLowCount = rsi.fn_detectLowerLows(priceLowArray);
 
@@ -86,8 +85,7 @@ const getData = async () => {
 
   } else if (priceTrend == "upward") {
     // retieve an array of price data and determine how many of them are higher hights
-    console.log(priceResponse.data);
-    console.log(rsiResponse.data);
+    console.log("upward trend"); console.log(priceResponse.data);    console.log(rsiResponse.data);
     priceHighArray = rsi.fn_findHighs(priceResponse.data); console.log("price low array : " + priceLowArray);
 
 
