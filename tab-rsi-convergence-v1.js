@@ -21,7 +21,7 @@ SHORT position conditions (BEARISH DIVERSION)
 const myArgs = process.argv.slice(2);
 crypto = myArgs[0];
 time_period = myArgs[1]
-backtracks = 20; // 2 hours using 15 min time period
+backtracks = 14; // 2 hours using 15 min time period
 
 
 // setup dependencies
