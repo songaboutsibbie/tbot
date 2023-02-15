@@ -68,7 +68,7 @@ const getData = async () => {
 
   if (priceTrend == "downward" ) {
     // retieve an array of price data and determine how many of them are lower lows
-    console.log("downward trend"); console.log(priceResponse.data);    console.log(rsiResponse.data);
+    //console.log("downward trend"); console.log(priceResponse.data);    console.log(rsiResponse.data);
     priceLowArray = rsi.fn_findLows(priceResponse.data); console.log("price low array : " + priceLowArray);
     LowerLowCount = rsi.fn_detectLowerLows(priceLowArray);
 
@@ -76,23 +76,35 @@ const getData = async () => {
     rsiLowArray = rsi.fn_findLows(rsiResponse.data); console.log("rsi low array : " + rsiLowArray);
     HigherLowsCount = rsi.fn_detectHigherLows(rsiLowArray);
 
-    console.log("Price Lower Low Count: " + LowerLowCount + "  RSI Higher Low Count: " + HigherLowsCount)
+    //console.log("Price Lower Low Count: " + LowerLowCount + "  RSI Higher Low Count: " + HigherLowsCount)
 
     if ( LowerLowCount > 1 && HigherLowsCount > 1) { 
       msg = "BULLISH CONVERGENCE DETECTED : " + crypto; console.log("BULLISH CONVERGENCE DETECTED") ;
     }
 
-    if (rsiResponse.data[backtracks - 1] > 29) {
+    if (rsiResponse.data[backtracks - 1] > 25) {
       msg = msg + "\n and its moved out of the oversold range.  Take long position now"
     }
 
   } else if (priceTrend == "upward") {
     // retieve an array of price data and determine how many of them are higher hights
     console.log("upward trend"); console.log(priceResponse.data);    console.log(rsiResponse.data);
-    priceHighArray = rsi.fn_findHighs(priceResponse.data); console.log("price low array : " + priceLowArray);
-
+    priceHighArray = rsi.fn_findHighs(priceResponse.data); console.log("price high array : " + priceHighArray);
+    HigherHighCount = rsi.fn_detectHigherHighs(priceHighArray);
 
     // retreive an array of rsi data and determine how many of them are lower highs
+    rsiHighAway = rsi.fn_findHighs(rsiResponse.data); console.log("rsi high array : " + rsiHighAway);
+    LowerHighsCount = rsi.fn_detectLowerHighs(rsiHighAway); 
+
+    console.log("Price Higher High Count: " + HigherHighCount + "  RSI Lower High Count: " + LowerHighsCount)
+
+    if ( HigherHighCount > 1 && LowerHighsCount > 1) { 
+      msg = "BEARISH CONVERGENCE DETECTED : " + crypto; console.log("BEARISH CONVERGENCE DETECTED") ;
+    }
+
+    if (rsiResponse.data[backtracks - 1] < 75) {
+      msg = msg + "\n and its moved out of the overbought range.  Take short position now"
+    }
 
   }
 
