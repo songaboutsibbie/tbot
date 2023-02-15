@@ -67,6 +67,7 @@ const getData = async () => {
 
   if (priceTrend == "downward" ) {
     // retieve an array of price lows and determine how many of them are lower lows
+    console.log("price data is : " + priceResponse.data);  console.log("rsi data is : " + rsiResponse.data);  
     priceLowArray = rsi.fn_findLows(priceResponse.data); console.log("price low array : " + priceLowArray);
     LowerLowCount = rsi.fn_detectLowerLows(priceLowArray);
 
