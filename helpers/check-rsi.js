@@ -71,9 +71,11 @@ function fn_detectHigherLows(numbers) {
   let HigherLowCount = 0;
 
   for (let i = 1; i < numbers.length; i++) {
+    console.log("is " + numbers[i] + " > " + HighestLow);
     if (numbers[i] > HighestLow) {
       HighestLow = numbers[i];
       HigherLowCount++;
+      console.log("  YES");
     } 
   }
   return HigherLowCount;
