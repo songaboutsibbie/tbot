@@ -71,11 +71,11 @@ function fn_detectHigherLows(numbers) {
   let HigherLowCount = 0;
 
   for (let i = 1; i < numbers.length; i++) {
-    console.log("is " + numbers[i] + " > " + HighestLow);
+    //console.log("is " + numbers[i] + " > " + HighestLow);
     if (numbers[i] > HighestLow) {
       HighestLow = numbers[i];
       HigherLowCount++;
-      console.log("  YES");
+      //console.log("  YES");
     } 
   }
   return HigherLowCount;
@@ -99,4 +99,41 @@ function fn_findHighs(numbers) {
   return LocalLowArray;
 }
 
-module.exports = { fn_isOversold, fn_isOversold_Recent, fn_isOverbought_Recent, fn_detectTrend, fn_findLows, fn_detectLowerLows, fn_detectHigherLows, fn_findHighs } ;
+function fn_detectHigherHighs(numbers) {
+  if (numbers.length < 2) {
+      return null;
+  }
+
+  let HighestHigh = numbers[0];
+  let HighestHighCount = 0;
+
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > HighestHigh) {
+      HighestHigh = numbers[i];
+      HighestHighCount++;
+    } 
+  }
+  return HighestHighCount;
+}
+
+function fn_detectLowerHighs(numbers) {
+
+  if (numbers.length < 2) {
+      return null;
+  }
+
+  let LowestHigh = numbers[0];
+  let LowestHighCount = 0;
+
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < LowestHigh) {
+      LowestHigh = numbers[i];
+      LowestHighCount++;
+    } 
+  }
+  return LowestHighCount;
+}
+
+
+
+module.exports = { fn_isOversold, fn_isOversold_Recent, fn_isOverbought_Recent, fn_detectTrend, fn_findLows, fn_detectLowerLows, fn_detectHigherLows, fn_findHighs, fn_detectHigherHighs, fn_detectLowerHighs } ;
