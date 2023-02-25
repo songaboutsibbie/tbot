@@ -53,8 +53,7 @@ axios.get('https://api.taapi.io/rsi', {
   }
 
 
-
-  if(order_position > 50) {
+  if(order_score > 50) {
     console.log("we have a position to take");
     msg = crypto + "  msg ";
     slack.fn_sendmessage(msg);
